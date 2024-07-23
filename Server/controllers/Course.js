@@ -67,15 +67,15 @@ exports.createCousre = async (req, res) => {
     );
 
     // Add the new course to the tgs
-		await Tag.findByIdAndUpdate(
-			{ _id: tagDetails._id },
-			{
-				$push: {
-					courses: newCourse._id,
-				},
-			},
-			{ new: true }
-		);
+    await Tag.findByIdAndUpdate(
+      { _id: tagDetails._id },
+      {
+        $push: {
+          courses: newCourse._id,
+        },
+      },
+      { new: true }
+    );
 
     // return response
     return res.status(200).json({
@@ -92,30 +92,67 @@ exports.createCousre = async (req, res) => {
 };
 
 exports.getAllCourses = async (req, res) => {
-	try {
-		const allCourses = await Course.find(
-			{},
-			{
-				courseName: true,
-				price: true,
-				thumbnail: true,
-				instructor: true,
-				ratingAndReviews: true,
-				studentsEnroled: true,
-			}
-		)
-			.populate("instructor")
-			.exec();
-		return res.status(200).json({
-			success: true,
-			data: allCourses,
-		});
-	} catch (error) {
-		console.log(error);
-		return res.status(404).json({
-			success: false,
-			message: `Can't Fetch Course Data`,
-			error: error.message,
-		});
-	}
+  try {
+    const allCourses = await Course.find(
+      {},
+      {
+        courseName: true,
+        price: true,
+        thumbnail: true,
+        instructor: true,
+        ratingAndReviews: true,
+        studentsEnroled: true,
+      }
+    )
+      .populate("instructor")
+      .exec();
+    return res.status(200).json({
+      success: true,
+      data: allCourses,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(404).json({
+      success: false,
+      message: `Can't Fetch Course Data`,
+      error: error.message,
+    });
+  }
+};
+
+exports.getCourseDetails = async (req, res) => {
+  try {
+    const { courseId } = req.body;
+    const courseDetails = await Course.findById({ _id: courseId })
+      .populate({
+        path: "instructor",
+        populate: {
+          path: "additionalDetails",
+        },
+      })
+      .populate({
+        path: "courseContent",
+        populate: {
+          path: "subSection",
+        },
+      })
+      .populate("category")
+      .exec();
+      if(!courseDetails){
+        return res.status(400).json({
+          success : false ,
+          message : `Could not find Course with ${courseId}`
+        })
+      }
+      return res.status(200).json({
+        success : false ,
+        message : "Course Details Fetched Successfully",
+        data : courseDetails
+      })
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: "Error while fetching Course Details",
+    });
+  }
 };
