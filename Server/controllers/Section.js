@@ -15,12 +15,13 @@ exports.createSection = async (req, res) => {
     }
     // create section
     const newSection = await Section.create({ sectionName });
+	console.log(newSection)
     // update Course
-    const updatedCourseDetails = await User.findByIdAndUpdate(
-      { courseId },
+    const updatedCourseDetails = await Course.findByIdAndUpdate(
+      courseId ,
       { $push: { courseContent: newSection._id } },
       { new: true }
-    ).populate({ path: "courseContent", populate: { path: "subSection" } });
+    ).populate("courseContent");
     console.log("UpdatedCourseDetails", updatedCourseDetails);
     return res.status(200).json({
       success: true,

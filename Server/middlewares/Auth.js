@@ -4,10 +4,13 @@ const jwt = require("jsonwebtoken");
 exports.auth = async (req, res, next) => {
   try {
     //extract token
-    const token =
-      req.body.token ||
-      req.cookies.token ||
-      req.header("Autharisation").replace("Bearer ", "");
+    console.log("BEFORE ToKEN EXTRACTION" );
+        //extract token
+        const token = req.cookies.token 
+                        || req.body.token 
+                        || req.header("Authorisation").replace("Bearer ", "");
+        console.log("AFTER ToKEN EXTRACTION",token);
+
     if (!token) {
       return res.status(403).json({
         succcess: false,
@@ -16,9 +19,10 @@ exports.auth = async (req, res, next) => {
     }
     try {
       // verify the token
-      const decode = jwt.verify(token, JWT_SECRET);
-      console.log(decode);
+      const decode = jwt.verify(token, process.env.JWT_SECRET);
+      console.log("decode",decode);
       req.user = decode;
+      console.log("USER WITH DECODE",req.user)
     } catch (error) {
       return res.status(400).json({
         success: false,

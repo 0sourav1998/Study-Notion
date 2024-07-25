@@ -9,11 +9,13 @@ const jwt = require("jsonwebtoken");
 exports.sendOtp = async (req, res) => {
   try {
     const { email } = req.body;
+    console.log("email.........",email)
     const checkUserPresent = await User.find({ email });
-    if (checkUserPresent) {
+    console.log("............",checkUserPresent)
+    if (checkUserPresent.length > 0) {
       return res.status(401).json({
         success: false,
-        message: "User ALready Exists",
+        message: "User Exists",
       });
     }
 
@@ -39,7 +41,7 @@ exports.sendOtp = async (req, res) => {
     const otpBody = await Otp.create(otpPayload);
     console.log("OTP BODY......", otpBody);
     return res.status(200).json({
-      success: false,
+      success: true,
       message: "OTP Sent Suceessfully",
       otp,
     });
@@ -100,12 +102,13 @@ exports.signUp = async (req, res) => {
       .sort({ createdAt: -1 })
       .limit(1);
     console.log("Recent Otp", recentOtp);
+    console.log(otp)
     if (recentOtp.length === 0) {
       return res.status(400).json({
         success: false,
         message: "OTP is not found",
       });
-    } else if (otp !== recentOtp) {
+    } else if (otp !== recentOtp[0].otp) {
       return res.status(400).json({
         success: false,
         message: "OTP not valid",
@@ -150,7 +153,7 @@ exports.login = async (req, res) => {
   try {
     // Extract data
     const { email, password } = req.body;
-
+    // console.log(email,password)
     // Validate data
     if (!email || !password) {
       return res.status(403).json({
@@ -158,12 +161,10 @@ exports.login = async (req, res) => {
         message: "All fields are required",
       });
     }
-
+    console.log("..............one")
     // Find user by email
-    const user = await User.findOne({ email })
-      .populate("additionalDetails")
-      .exec();
-
+    const user = await User.findOne({ email :  email }).populate("additionalDetails").exec();
+      console.log("user...........",user)
     // Check if user exists
     if (!user) {
       return res.status(400).json({
@@ -186,9 +187,12 @@ exports.login = async (req, res) => {
         expiresIn: "2h",
       });
 
+      console.log("token",token)
       // Set token and remove password from user object
       user.token = token;
       user.password = undefined;
+
+      console.log("USER" ,user)
 
       // Cookie options
       const options = {
@@ -197,7 +201,7 @@ exports.login = async (req, res) => {
       };
 
       // Create cookie and send response
-      return res.cookie("token", token, options).status(200).json({
+      res.cookie("token", token, options).status(200).json({
         success: true,
         message: "User logged in successfully",
         token,

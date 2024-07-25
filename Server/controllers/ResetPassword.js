@@ -1,4 +1,7 @@
 const User = require("../models/User");
+const crypto = require("crypto") ;
+const bcrypt = require("bcryptjs");
+const { mailSender } = require("../utils/sendMail");
 
 exports.resetPasswordToken = async (req, res) => {
   try {
@@ -10,6 +13,7 @@ exports.resetPasswordToken = async (req, res) => {
         message: "Email not registered",
       });
     } ;
+	console.log("User...............",user)
     const token = crypto.randomUUID();
     const updatedUser = await User.findOneAndUpdate(
       { email },
@@ -56,7 +60,7 @@ exports.resetPassword = async (req, res) => {
 				message: "Token is Invalid",
 			});
 		}
-		if (!(userDetails.resetPasswordExpire > Date.now())) {
+		if ((!userDetails.resetPasswordExpire > Date.now())) {
 			return res.status(403).json({
 				success: false,
 				message: `Token is Expired, Please Regenerate Your Token`,

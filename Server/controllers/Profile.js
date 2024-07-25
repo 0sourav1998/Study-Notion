@@ -4,7 +4,7 @@ const User = require("../models/User")
 // Method for updating a profile
 exports.updateProfile = async (req, res) => {
     try {
-      const { dateOfBirth = "", about = "", contactNumber } = req.body;
+      const { dateOfBirth = "", about = "", contactNumber , gender} = req.body;
       const id = req.user.id;
   
       // Find the profile by id
@@ -14,6 +14,7 @@ exports.updateProfile = async (req, res) => {
       // Update the profile fields
       profile.dateOfBirth = dateOfBirth;
       profile.about = about;
+      profile.gender = gender ;
       profile.contactNumber = contactNumber;
   
       // Save the updated profile
@@ -86,3 +87,29 @@ exports.updateProfile = async (req, res) => {
       });
     }
   };
+
+  exports.getEnrolledCourses = async (req, res) => {
+    try {
+      const userId = req.user.id
+      const userDetails = await User.findOne({
+        _id: userId,
+      })
+        .populate("courses")
+        .exec()
+      if (!userDetails) {
+        return res.status(400).json({
+          success: false,
+          message: `Could not find user with id: ${userDetails}`,
+        })
+      }
+      return res.status(200).json({
+        success: true,
+        data: userDetails.courses,
+      })
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: error.message,
+      })
+    }
+};

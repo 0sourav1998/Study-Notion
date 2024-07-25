@@ -1,7 +1,7 @@
 const {instance} = require("../config/razorpay");
 const Course = require("../models/Course");
 const User = require("../models/User");
-const mailSender = require("../utils/mailSender");
+const mailSender = require("../utils/sendMail");
 const {courseEnrollmentEmail} = require("../mail/templates/courseEnrollmentEmail");
 const { default: mongoose } = require("mongoose");
 const { paymentSuccessEmail } = require("../mail/templates/paymentSuccessEmail");
@@ -75,7 +75,7 @@ exports.verifyPayment = async(req,res)=>{
     }
     //ratta
     let body = razorpay_order_id + "|" + razorpay_payment_id ;
-    const expectedSignature = crypto.createHmac("sha256",process.env.RAZORPAY_SECRET)
+    const expectedSignature = crypto.createHmac("sha256",process.env.API_SECRET)
     .update(body.toString())
     .digest("hex") ;
     if(expectedSignature === razorpay_signature){
