@@ -32,9 +32,9 @@ const timeline = [
 const TimelineSection = () => {
   return (
     <div>
-      <div className='flex flex-row gap-15 items-center'>
+      <div className='flex lg:flex-row flex-col gap-15 items-center'>
 
-        <div className='w-[45%] flex flex-col gap-5'>
+        <div className='lg:w-[45%] w-full flex flex-col gap-5'>
             {
                 timeline.map( (element, index) => {
                     return (
@@ -58,19 +58,19 @@ const TimelineSection = () => {
 
             <img  src={timelineImage}
             alt="timelineImage"
-            className='shadow-white object-cover h-fit'
+            className='shadow-white object-cover h-fit mt-12 lg:mt-0'
             />
 
-            <div className='absolute bg-caribbeangreen-700 flex flex-row text-white uppercase py-7
+            <div className='absolute lg:w-fit w-72 bg-caribbeangreen-700 flex flex-row text-white uppercase py-7
                             left-[50%] translate-x-[-50%] translate-y-[-50%]'>
-                <div className='flex flex-row gap-5 items-center border-r border-caribbeangreen-300 px-7'>
-                    <p className='text-3xl font-bold'>10</p>
-                    <p className='text-caribbeangreen-300 text-sm'>Years of Experience</p>
+                <div className='flex flex-row lg:gap-5 gap-2 items-center border-r border-caribbeangreen-300 lg:px-7 px-3'>
+                    <p className='lg:text-3xl lg:font-bold text-xl font-semibold'>10</p>
+                    <p className='text-caribbeangreen-300 lg:text-sm text-xs'>Years of Experience</p>
                 </div>
 
-                <div className='flex gap-5 items-center px-7'>
-                <p className='text-3xl font-bold'>250</p>
-                    <p className='text-caribbeangreen-300 text-sm'>TYpe of Courses</p>
+                <div className='flex lg:gap-5 gap-2 items-center lg:px-7 px-3'>
+                <p className='lg:text-3xl lg:font-bold text-xl font-semibold'>250</p>
+                    <p className='text-caribbeangreen-300 lg:text-sm text-xs'>TYpe of Courses</p>
                 </div>
 
             </div>
