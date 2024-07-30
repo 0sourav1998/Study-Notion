@@ -4,24 +4,26 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast' ;
+import { Toaster } from 'react-hot-toast';
 import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from './reducer/index'
+import rootReducer from './reducer/index';
 import { Provider } from 'react-redux';
+// import thunk from 'redux-thunk'; // Named import
 
 const store = configureStore({
-  reducer : rootReducer
-})
+  reducer: rootReducer,
+  // middleware: (getDefaultMiddleware) =>
+    // getDefaultMiddleware().concat(thunk), // Apply thunk middleware
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-  <Provider store={store}>
-    <App />
-    <Toaster />
-  </Provider>
+    <Provider store={store}>
+      <App />
+      <Toaster />
+    </Provider>
   </BrowserRouter>
 );
-
 
 reportWebVitals();
