@@ -48,7 +48,7 @@ const About = () => {
             <div className="flex flex-col items-center gap-10 lg:flex-row justify-between">
                 {/* founding story left box */}
                 <div className="my-24 flex lg:w-[50%] flex-col gap-10">
-                    <h1 className="bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCB045] bg-clip-text text-4xl font-semibold text-transparent lg:w-[70%] ">Our Founding Story</h1>
+                    <h1 className="bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCB045] bg-clip-text text-4xl font-semibold text-transparent lg:w-[70%] w-[100%]">Our Founding Story</h1>
 
                     <p className="text-base font-medium text-richblack-300 lg:w-[95%]">Our e-learning platform was born out of a shared vision and passion for transforming education. It all began with a group of educators, technologists, and lifelong learners who recognized the need for accessible, flexible, and high-quality learning opportunities in a rapidly evolving digital world.</p>
 
@@ -61,7 +61,7 @@ const About = () => {
             </div>
 
             {/* vision and mission wala parent div */}
-            <div className='flex'>
+            <div className='flex lg:flex-row flex-col gap-6'>
                 {/* left box */}
                 <div>
                     <h1>Our Vision</h1>

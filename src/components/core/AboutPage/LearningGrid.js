@@ -64,12 +64,12 @@ const LearningGrid = () => {
                 {
                     card.order < 0 
                     ? (
-                        <div className='lg:w-[90%] flex flex-col pb-5 gap-3'>
-                            <div className='text-4xl font-semibold'>
+                        <div className='lg:w-[90%] w-[100%] flex flex-col pb-5 gap-3'>
+                            <div className='text-2xl lg:text-4xl lg:font-semibold font-medium'>
                                 {card.heading}
                                 <HighlightText text={card.highlightText} />
                             </div>
-                            <p className='font-medium'>
+                            <p className='lg:font-medium font-normal'>
                                 {card.description}
                             </p>
                             <div className='w-fit mt-4'>

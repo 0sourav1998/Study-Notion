@@ -25,13 +25,13 @@ const ContactFormSection = () => {
 
 
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="flex flex-col  w-11/12 lg:mx-auto">
       <p className="text-center text-3xl font-semibold mb-10">Get in Touch</p>
       <form
         onSubmit={handleSubmit(handleMessageSubmit)}
-        className="flex flex-col w-1/2 mx-auto relative left-16"
+        className="flex flex-col lg:w-1/2 w-[90%] lg:mx-auto relative lg:left-16 ml-4"
       >
-        <div className="flex gap-x-2">
+        <div className="flex lg:flex-row flex-col gap-x-2">
           <div className="flex flex-col">
             <label htmlFor="firstName" className="mb-3 text-2xl font-semibold">
               First Name
@@ -74,7 +74,7 @@ const ContactFormSection = () => {
             name="emailAddress"
             id="emailAddress"
             placeholder="Enter Email Address"
-            className="bg-richblack-300 text-black p-2 rounded-md w-[75%]"
+            className="bg-richblack-300 text-black p-2 rounded-md lg:w-[75%] w-[100%]"
             {...register("emailAddress", {
               required: { value: true, message: "This field is required" },
             })}
@@ -100,7 +100,7 @@ const ContactFormSection = () => {
             type="number"
             placeholder="0123456789"
             name="phoneNo"
-            className="w-[57%] bg-richblack-300 text-black p-2 rounded-md"
+            className="lg:w-[57%] w-[100%] bg-richblack-300 text-black p-2 rounded-md"
             {...register("phoneNo", {
               required: { value: true, message: "This Field is required" },
               maxLength: { value: 10, message: "Invalid Phone Number" },
@@ -119,7 +119,7 @@ const ContactFormSection = () => {
             name="message"
             rows={7}
             column={30}
-            className="bg-richblack-300 text-black p-2 rounded-md w-[75%]"
+            className="bg-richblack-300 text-black p-2 rounded-md lg:w-[75%] w-[100%]"
             {...register("message", {
               required: { value: true, message: "This field is required" },
             })}
