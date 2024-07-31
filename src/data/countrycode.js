@@ -1,4 +1,4 @@
-[
+exports.countryCode = [
     {
         "country": "Afghanistan",
         "code": "+93"
