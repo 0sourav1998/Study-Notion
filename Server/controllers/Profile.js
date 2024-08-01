@@ -4,13 +4,15 @@ const User = require("../models/User")
 // Method for updating a profile
 exports.updateProfile = async (req, res) => {
     try {
-      const { dateOfBirth = "", about = "", contactNumber , gender} = req.body;
+      const { dateOfBirth = "", about = "", contactNumber , gender , firstName , lastName } = req.body;
       const id = req.user.id;
   
       // Find the profile by id
       const userDetails = await User.findById(id);
       const profile = await Profile.findById(userDetails.additionalDetails);
   
+      userDetails.firstName = firstName ;
+      userDetails.lastName = lastName ;
       // Update the profile fields
       profile.dateOfBirth = dateOfBirth;
       profile.about = about;
@@ -19,6 +21,7 @@ exports.updateProfile = async (req, res) => {
   
       // Save the updated profile
       await profile.save();
+      await userDetails.save() ;
   
       const updatedUserDetails = await User.findById(id).populate(
         "additionalDetails"

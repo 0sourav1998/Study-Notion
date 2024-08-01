@@ -8,6 +8,10 @@ import ForgotPassword from './pages/ForgotPassword';
 import UpdatePassword from './pages/UpdatePassword';
 import VerifyEmail from './pages/VerifyEmail';
 import About from './pages/About';
+import MyProfile from './components/core/Dashboard/MyProfile';
+import Dashboard from './pages/Dashboard';
+import Setting from './components/core/Dashboard/Settings';
+import EnrolledCourses from './components/core/Dashboard/EnrolledCourses';
 
 function App() {
   return (
@@ -21,6 +25,11 @@ function App() {
         <Route path='/update-password/:id' element={<UpdatePassword/>}/>
         <Route path='/verify-email' element={<VerifyEmail/>}/>
         <Route path='/about' element={<About/>}/>
+        <Route element={<Dashboard/>}> 
+            <Route path="/dashboard/my-profile" element={<MyProfile/>}/>
+            <Route path="/dashboard/settings" element={<Setting/>}/>
+            <Route path="/dashboard/enrolled-courses" element={<EnrolledCourses/>}/>
+        </Route>
       </Routes>
     </div>
   );
