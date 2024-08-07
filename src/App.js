@@ -13,6 +13,8 @@ import Dashboard from './pages/Dashboard';
 import Setting from './components/core/Dashboard/Settings';
 import EnrolledCourses from './components/core/Dashboard/EnrolledCourses';
 import Cart from './components/core/Dashboard/cart';
+import AddCourse from './components/core/Dashboard/AddCourse/AddCourse';
+import MyCourses from './components/core/Dashboard/MyCourse';
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
             <Route path="/dashboard/settings" element={<Setting/>}/>
             <Route path="/dashboard/enrolled-courses" element={<EnrolledCourses/>}/>
             <Route path="/dashboard/cart" element={<Cart />} />
+            <Route path="/dashboard/add-course" element={<AddCourse/>} />
+            <Route path="/dashboard/my-courses" element={<MyCourses/>}/>
         </Route>
       </Routes>
     </div>

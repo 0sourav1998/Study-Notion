@@ -17,6 +17,9 @@ const courseSchema = new mongoose.Schema({
     price : {
         type : Number
     } ,
+    instructions: {
+		type: [String],
+	},
     courseContent : [{
         type : mongoose.Schema.Types.ObjectId ,
         ref : "Section"

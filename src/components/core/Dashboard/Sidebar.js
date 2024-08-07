@@ -41,8 +41,7 @@ const Sidebar = () => {
                 btn1Text : "Logout" ,
                 btn2Text : "Cancel" ,
                 btn1Handle :() =>dispatch(logout(navigate)) ,
-                btn2handle : () =>setConfirmationModal(null)
-
+                btn2Handle :() =>setConfirmationModal(null) ,
             })}
             className="px-8 py-2 text-sm font-medium text-richblack-300"
             >
