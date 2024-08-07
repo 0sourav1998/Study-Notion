@@ -31,7 +31,7 @@ const RenderStep = () => {
               className={`grid cursor-default aspect-square w-[34px] place-items-center rounded-full border-[1px] ${
                 step === item.id
                   ? "border-yellow-50 bg-yellow-900 text-yellow-50"
-                  : "border-richblack-700 bg-richblack-800 text-richblack-300"
+                  : "border-richblack-700 bg-richblack-800 text-black"
               } ${step > item.id && "bg-yellow-50 text-yellow-50"}} `}
             >
               {step > item.id ? (

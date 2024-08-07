@@ -33,7 +33,7 @@ const CoursesTable = ({ courses, setCourses }) => {
       <Table className="rounded-xl border border-richblack-800 ">
         <Thead>
           <Tr className="flex gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
-            <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">Courses</Th>
+            <Th className="flex-1 text-left text-sm font-medium uppercase"><p className="text-richblack-100">Courses</p></Th>
             <Th className="text-left text-sm font-medium uppercase text-richblack-100">Duration</Th>
             <Th className="text-left text-sm font-medium uppercase text-richblack-100">Price</Th>
             <Th className="text-left text-sm font-medium uppercase text-richblack-100">Actions</Th>
@@ -41,11 +41,11 @@ const CoursesTable = ({ courses, setCourses }) => {
         </Thead>
         <Tbody>
             {courses.length > 0 && courses.map((course)=>(
-                <Tr  key={course._id}
+                <Tr key={course._id}
                 className="flex gap-x-10 border-b border-richblack-800 px-6 py-8">
                 <Td className="flex flex-1 gap-x-4">
-                    <img src={course.thumbnail} alt="Course-Thumbnail"  className="h-[148px] w-[220px] rounded-lg object-cover"/>
-                    <div className="flex flex-col justify-between">
+                    <img src={course.thumbnail} alt="Course-Thumbnail"  className="lg:h-[148px] lg:w-[220px] h-[100px] w-[200px] rounded-lg object-cover "/>
+                    <div className="flex flex-col justify-between gap-2 ">
                     <p className="text-lg font-semibold text-richblack-5">{course.courseName}</p>
     
                     <p className="text-xs text-richblack-300">{course.courseDescription}</p>

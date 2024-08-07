@@ -22,6 +22,7 @@ const {
   GET_FULL_COURSE_DETAILS_AUTHENTICATED,
   CREATE_RATING_API,
   LECTURE_COMPLETION_API,
+  DELETE_ALL_COURSES_API
 } = courseEndpoints
 
 export const getAllCourses = async () => {
@@ -119,7 +120,7 @@ export const editCourseDetails = async (data, token) => {
     if (!response?.data?.success) {
       throw new Error("Could Not Update Course Details")
     }
-    toast.success("Course Details Updated Successfully")
+    toast.success("Success")
     result = response?.data?.data
   } catch (error) {
     console.log("EDIT COURSE API ERROR............", error)
@@ -335,6 +336,26 @@ export const getFullDetailsOfCourse = async (courseId, token) => {
   toast.dismiss(toastId)
   //   dispatch(setLoading(false));
   return result
+}
+
+//delete All Courses
+export const deleteAllCourses = async(token)=>{
+  const toastId = toast.loading("Loading...") ;
+  let result ;
+  try{
+    
+    const response = await apiConnector("DELETE",DELETE_ALL_COURSES_API,null,{
+      Authorization: `Bearer ${token}`,
+    }) ;
+    if(response){
+      result = response?.data?.data
+    }
+    toast.success("Courses Deleted")
+  }catch(error){
+    console.log(error)
+  }
+  toast.dismiss(toastId) ;
+  return result ;
 }
 
 // mark a lecture as complete

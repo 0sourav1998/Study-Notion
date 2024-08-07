@@ -6,7 +6,7 @@ const mongoose = require("mongoose") ;
 const Section = require('../models/Section');
 const SubSection = require('../models/SubSection')
 const CourseProgress = require("../models/CourseProgress");
-// const {convertSecondsToDuration} = require("../utils/secToDuration")
+const {convertSecondsToDuration} = require("../utils/secToDuration")
 
 // Function to create a new course
 exports.createCourse = async (req, res) => {
@@ -378,6 +378,35 @@ exports.deleteCourse = async (req, res) => {
 	}
   }
 
+  exports.deleteAllCourses = async(req,res)=>{
+	try{
+		console.log("..................111111111111",req.user)
+		const userId = req.user.id;
+		console.log("One...................")
+		if(!userId){
+			return res.status(404).json({
+				success : false ,
+				message : "User not Found",
+			})
+		}
+		console.log(userId)
+		const user = await User.findById(userId) ;
+		console.log("user>>>>>>>>>>>>>>>>>>>>>>",user)
+		const courses =await Course.deleteMany({instructor : user._id}) ;
+		console.log("courses,,,,,,,,,,,",courses)
+		return res.status(200).json({
+			success : true ,
+			message : "All Courses Deleted Successfully" ,
+			data : courses,
+		})
+	}catch(error){
+		return res.status(400).json({
+			success : false ,
+			message : "Something went wrong while deleting courses"
+		})
+	}
+  }
+
   exports.getFullCourseDetails = async (req, res) => {
 	try {
 	  const { courseId } = req.body
@@ -443,8 +472,8 @@ exports.deleteCourse = async (req, res) => {
 		data: {
 		  courseDetails,
 		  totalDuration,
-		  completedVideos: courseProgressCount?.completedVideos
-			? courseProgressCount?.completedVideos
+		  completedVideos: courseProgressCount?.comletedVideo
+			? courseProgressCount?.comletedVideo
 			: [],
 		},
 	  })

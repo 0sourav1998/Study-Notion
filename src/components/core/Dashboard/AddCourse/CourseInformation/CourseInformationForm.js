@@ -119,9 +119,6 @@ const CourseInformationForm = () => {
       } else {
         toast.error("NO Changes made so far");
       }
-      console.log("PRINTING FORMDATA", formData);
-      console.log("PRINTING result", result);
-
       return;
     }
     //create a course
@@ -157,7 +154,7 @@ const CourseInformationForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-8 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6"
+      className="space-y-8 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6 mr-8 lg:mr-0"
     >
       <div className="flex flex-col space-y-2">
         <label htmlFor="courseTitle" className="text-sm text-richblack-5">
@@ -167,7 +164,7 @@ const CourseInformationForm = () => {
           id="courseTitle"
           placeholder="Enter Course Name"
           {...register("courseTitle", { required: true })}
-          className="form-style w-full p-1"
+          className="form-style w-full p-1 text-black"
         />
         {errors.courseTitle && (
           <span className="ml-2 text-xs tracking-wide text-pink-200">
@@ -183,7 +180,7 @@ const CourseInformationForm = () => {
           id="courseShortDesc"
           placeholder="Enter Description"
           {...register("courseShortDesc", { required: true })}
-          className="form-style resize-x-none min-h-[130px] w-full p-1"
+          className="form-style resize-x-none min-h-[130px] w-full p-1 text-black"
         />
         {errors.courseShortDesc && (
           <span>Course Description is required**</span>
@@ -198,7 +195,7 @@ const CourseInformationForm = () => {
           id="coursePrice"
           type="number"
           placeholder="Enter Course Price"
-          className="form-style w-full !pl-12 p-1"
+          className="form-style w-full !pl-12 p-1 text-black"
           {...register("coursePrice", {
             required: true,
             valueAsNumber: true,
@@ -219,7 +216,7 @@ const CourseInformationForm = () => {
           id="courseCategory"
           defaultValue=""
           {...register("courseCategory", { required: true })}
-          className="form-style w-full p-1"
+          className="form-style w-full p-1 text-black"
         >
           <option value="" disabled>
             Choose a Category
@@ -260,7 +257,7 @@ const CourseInformationForm = () => {
           id="coursebenefits"
           placeholder="Enter Benefits of the course"
           {...register("courseBenefits", { required: true })}
-          className="form-style resize-x-none min-h-[130px] w-full"
+          className="form-style resize-x-none min-h-[130px] w-full text-black"
         />
         {errors.courseBenefits && (
           <span className="ml-2 text-xs tracking-wide text-pink-200">Benefits of the course are required</span>
@@ -279,7 +276,7 @@ const CourseInformationForm = () => {
         {editCourse && (
           <button
             onClick={() => dispatch(setStep(2))}
-            className="flex items-center gap-x-2 bg-richblack-300"
+            className="flex items-center gap-x-2 bg-richblack-300 p-2 rounded-md mb-3"
           >
             Continue Without Saving
           </button>

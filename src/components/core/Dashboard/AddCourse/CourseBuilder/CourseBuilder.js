@@ -73,21 +73,21 @@ const CourseBuilder = () => {
   return (
     <div>
       <form className="text-white " onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label htmlFor="sectionName">Section Name</label>
+        <div className="flex flex-col">
+          <label htmlFor="sectionName" className="mb-4">Section Name</label>
           <input
             id="sectionName"
-            placeholder="create section"
-            className="w-full text-black"
+            placeholder="Create Section"
+            className="lg:w-full text-black mb-6 p-2 w-[80%]"
             {...register("sectionName", { required: true })}
           />
-          <IconBtn
+        </div>
+        <IconBtn
             type="submit"
             text={editSection ? "Save Changes" : "Create"}
             customClass={"text-white"}
           />
-        </div>
-        <div>
+        <div className="mt-6">
           {editSection && (
             <button type="button" onClick={cancelEdit}>
               Cancel Edit
@@ -96,11 +96,11 @@ const CourseBuilder = () => {
         </div>
       </form>
       <div>{course?.courseContent?.length > 0 && <NestedView />}</div>
-      <div>
-        <button type="button" onClick={goBack} className="text-white rounded-md p-2 bg-richblack-300 mr-3">
+      <div className="flex gap-6 mt-6">
+        <button type="button" onClick={goBack} className="flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900">
           Back
         </button>
-        <button type="button" onClick={goToNext} className="text-white rounded-md p-2 bg-richblack-300">
+        <button type="button" onClick={goToNext} className="text-black font-bold rounded-md p-2 bg-yellow-50">
           Next
         </button>
       </div>

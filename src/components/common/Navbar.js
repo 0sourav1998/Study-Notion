@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai"
 import { BsChevronDown } from "react-icons/bs"
-import { useSelector } from "react-redux"
-import { Link, matchPath, useLocation } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { Link, matchPath, useLocation, useNavigate } from "react-router-dom"
 
 import logo from "../../assets/Logo/Logo-Full-Light.png"
 import { NavbarLinks } from "../../data/navbar-links"
@@ -11,12 +11,17 @@ import { categories } from "../../services/apis"
 import { ACCOUNT_TYPE } from "../../utils/constants.js"
 import ProfileDropdown from "../core/Auth/ProfileDropdown"
 import { getAllCategory } from "../../services/operations/CategoryAPI.js"
+import { logout } from "../../services/operations/authAPI.js"
+import ConfirmationModal from "../common/ConfirmationModal.js"
 
 function Navbar() {
   const { token } = useSelector((state) => state.auth) ;
   console.log("Token",token)
   const { user } = useSelector((state) => state.profile)
   const { totalItems } = useSelector((state) => state.cart)
+  const [confirmationModal,setConfirmationModal] = useState(null)
+  const dispatch = useDispatch() ;
+  const navigate = useNavigate() ;
   const location = useLocation()
 
   const [subLinks, setSubLinks] = useState([])
@@ -28,6 +33,14 @@ function Navbar() {
     console.log(categories)
     setSubLinks(categories) ;
     console.log("Sublink",subLinks)
+  }
+
+  const handleLogout =()=>{
+    console.log("Logged Out")
+    dispatch(logout(navigate)) ;
+    setConfirmationModal(null)
+    navigate("/login") ;
+
   }
 
   useEffect(() => {
@@ -137,12 +150,29 @@ function Navbar() {
               </button>
             </Link>
           )}
-          {token !== null && <ProfileDropdown />}
+          {token !== null && <Link to="/dashboard/my-profile">
+            <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
+            Dashboard
+            </button></Link>}
+            {token !== null &&
+            <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100" onClick={()=>setConfirmationModal({
+              text1 : "Logout" ,
+              text2 : "Are You Sure , You Will be Logged Out ?" ,
+              btn1Text : "Logout" ,
+              btn2Text : "Cancel" ,
+              btn1Handle : handleLogout ,
+              btn2Handle : ()=>setConfirmationModal(null)
+            })}>
+            Logout
+            </button>}
         </div>
         <button className="mr-4 md:hidden sm:hidden">
           <AiOutlineMenu fontSize={24} fill="#AFB2BF" />
         </button>
       </div>
+      {
+        confirmationModal && <ConfirmationModal modalData={confirmationModal}/>
+      }
     </div>
   )
 }
