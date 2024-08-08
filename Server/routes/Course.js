@@ -20,6 +20,7 @@ const {
   const {
     showAllCategories,
     createCategory,
+    categoryPageDetails,
     // categoryPageDetails,
   } = require("../controllers/Category")
   
@@ -79,7 +80,7 @@ router.post("/getCourseDetails", getCourseDetails)
 // Category can Only be Created by Admin
 router.post("/createCategory", auth, isAdmin, createCategory)
 router.get("/showAllCategories", showAllCategories)
-// router.post("/getCategoryPageDetails", categoryPageDetails)
+router.post("/getCategoryPageDetails", categoryPageDetails)
 
 // ********************************************************************************************************
 //                                      Rating and Review

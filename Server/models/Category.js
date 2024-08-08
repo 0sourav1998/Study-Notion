@@ -9,11 +9,11 @@ const categorySchema = new mongoose.Schema({
         type : String ,
         required : true 
     } ,
-    course : {
+    course : [{
         type : mongoose.Schema.Types.ObjectId ,
         ref : "Course" ,
         // required : true 
-    }
+    }]
 }) 
 
 module.exports = mongoose.model("Category" , categorySchema)
