@@ -22,6 +22,7 @@ function loadScript(src) {
 }
 
 export async function buyCourse(token, courses, userDetails, navigate, dispatch) {
+    console.log(token, courses, userDetails, navigate, dispatch)
     const toastId = toast.loading("Loading...");
     try{
         //load the script
@@ -58,7 +59,7 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
             },
             handler: function(response) {
                 //send successful wala mail
-                sendPaymentSuccessfulEmail(response, orderResponse.data.message.amount,token );
+                // sendPaymentSuccessfulEmail(response, orderResponse.data.message.amount,token );
                 //verifyPayment
                 verifyPayment({...response, courses}, token, navigate, dispatch);
             }
@@ -80,7 +81,7 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
 }
 
 
-const sendPaymentSuccessfulEmail = async (response, amount, token) => {
+const sendPaymentSuccessfulEmail = async (response, amount, token ) => {
     try {
         await apiConnector("POST", SEND_PAYMENT_SUCCESS_EMAIL_API, {
             orderId: response.razorpay_order_id,
@@ -95,24 +96,24 @@ const sendPaymentSuccessfulEmail = async (response, amount, token) => {
 };
 
 // Verify payment
-async function verifyPayment(bodyData, token, navigate, dispatch) {
+async function verifyPayment(bodyData, token, navigate, dispatch,res) {
     const toastId = toast.loading("Verifying payment...");
+    console.log("verifing Payment one")
     dispatch(setPaymentLoading(true));
     try {
         const response = await apiConnector("POST", COURSE_VERIFY_API, bodyData, {
             Authorization: `Bearer ${token}`,
         });
-
+        console.log("verifing Payment two")
         if (!response.data.success) {
             throw new Error(response.data.message);
         }
-
+        console.log("verifing Payment three")
         toast.success("Payment successful, you are added to the course");
         navigate("/dashboard/enrolled-courses");
         dispatch(resetCart());
     } catch (error) {
-        console.log("Payment verify error:", error);
-        toast.error("Could not verify payment");
+        console.log(error);
     }
     toast.dismiss(toastId);
     dispatch(setPaymentLoading(false));
