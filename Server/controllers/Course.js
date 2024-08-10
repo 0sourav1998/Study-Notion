@@ -392,6 +392,7 @@ exports.getFullCourseDetails = async (req, res) => {
   try {
     const { courseId } = req.body;
     const userId = req.user.id;
+    console.log("Inside course detials")
     const courseDetails = await Course.findOne({
       _id: courseId,
     })

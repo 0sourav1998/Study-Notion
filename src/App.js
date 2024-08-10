@@ -20,6 +20,8 @@ import { useSelector } from "react-redux";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import Catalog from "./pages/Catalog";
 import CourseDetails from "./pages/CourseDetails";
+import ViewCourse from "./pages/ViewCourse";
+import VideoDetails from "./components/core/Dashboard/ViewCourse/VideoDetails";
 
 function App() {
   const { user } = useSelector((state) => state.profile);
@@ -59,6 +61,9 @@ function App() {
               />
             </>
           )}
+        </Route>
+        <Route element={<ViewCourse/>}>
+        <Route path="/view-course/:courseId/section/:sectionId/subSection/:subSectionId" element={<VideoDetails/>}/>
         </Route>
       </Routes>
     </div>

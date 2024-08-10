@@ -61,7 +61,7 @@ export default function EnrolledCourses() {
                   )
                 }}
               >
-                {/* {console.log("Details........",course?.courseContent)} */}
+                {/* {console.log("Details........",course,course.courseContent?.[0],course.courseContent?.[0]?.subSection?.[0]?._id)} */}
                 <img
                   src={course.thumbnail}
                   alt="course_img"
