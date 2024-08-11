@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import IconBtn from "../../../common/IconButton";
-import {BsChevronDown} from 'react-icons/bs'
+import { BsChevronDown } from "react-icons/bs";
 
 const VideoDetailsSidebar = ({ setReviewModal }) => {
   const [videoBarActive, setVideoBarActive] = useState("");
   const [activeStatus, setActiveStatus] = useState("");
-
+  const [loading, setLoading] = useState(false);
+  const {token} = useSelector((state)=>state.auth)
 
   const { subSectionId } = useParams();
   const { sectionId } = useParams();
+  const { courseId } = useParams();
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -21,33 +24,25 @@ const VideoDetailsSidebar = ({ setReviewModal }) => {
     totalNoOfLectures,
   } = useSelector((state) => state.viewCourse);
 
+  const {completedVideo} = useSelector((state)=>state.completedVideos)
+
   const handleAddReview = () => {
-    console.log("I am inside Add handleAddReview")
     setReviewModal(true);
-}
-  console.log(
-    "courseSectionData,courseEntireData,completedLectures,totalNoOfLectures",
-    courseSectionData,
-    courseEntireData,
-    completedLectures,
-    totalNoOfLectures
-  );
+  };
+
 
   const activeOrNot = () => {
     if (!Array.isArray(courseSectionData)) return;
     const currentSectionIndex = courseSectionData.findIndex(
       (data) => data._id === sectionId
     );
-    console.log("Section Index", currentSectionIndex);
     const currentSubSectionIndex = courseSectionData?.[
       currentSectionIndex
     ]?.subSection.findIndex((data) => data._id === subSectionId);
-    console.log("Sub Section Index", currentSubSectionIndex);
     const activeSubSectionId =
       courseSectionData[currentSectionIndex]?.subSection?.[
         currentSubSectionIndex
       ]?._id;
-    console.log("activeSubSectionId", activeSubSectionId);
     //set current section here
     setActiveStatus(courseSectionData?.[currentSectionIndex]?._id);
     // setActiveStatus(sectionId) ;
@@ -58,6 +53,7 @@ const VideoDetailsSidebar = ({ setReviewModal }) => {
   useEffect(() => {
     activeOrNot();
   }, [courseSectionData, courseEntireData, location.pathname]);
+
   return (
     <>
       <div className="flex h-[calc(100vh-3.5rem)] w-[320px] max-w-[350px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800">
@@ -67,16 +63,13 @@ const VideoDetailsSidebar = ({ setReviewModal }) => {
               Back
             </button>
             <button>
-              <IconBtn
-                text="Add A Review"
-                onclick={handleAddReview}
-              />
+              <IconBtn text="Add A Review" onclick={handleAddReview} />
             </button>
           </div>
           <div className="flex flex-col">
             <p>{courseEntireData?.courseName}</p>
             <p className="text-sm font-semibold text-richblack-500">
-              {completedLectures?.length} / {totalNoOfLectures}
+                Total Content : {totalNoOfLectures} Video(s)
             </p>
           </div>
         </div>
@@ -92,19 +85,19 @@ const VideoDetailsSidebar = ({ setReviewModal }) => {
                   <p>{section?.sectionName}</p>
                 </div>
                 <div className="flex items-center gap-3">
-                {/* <span className="text-[12px] font-medium">
+                  {/* <span className="text-[12px] font-medium">
                   Lession {course?.subSection.length}
                 </span> */}
-                <span
-                  className={`${
-                    activeStatus === section?.sectionName
-                      ? "rotate-0"
-                      : "rotate-180"
-                  } transition-all duration-500`}
-                >
-                  <BsChevronDown />
-                </span>
-              </div>
+                  <span
+                    className={`${
+                      activeStatus === section?.sectionName
+                        ? "rotate-0"
+                        : "rotate-180"
+                    } transition-all duration-500`}
+                  >
+                    <BsChevronDown />
+                  </span>
+                </div>
               </div>
               <div className="transition-[height] duration-500 ease-in-out">
                 {activeStatus === section?._id &&
@@ -125,7 +118,7 @@ const VideoDetailsSidebar = ({ setReviewModal }) => {
                     >
                       <input
                         type="checkbox"
-                        checked={completedLectures.includes(topic._id)}
+                        checked={completedVideo.includes(topic._id)}
                       />
                       <span>{topic?.title}</span>
                     </div>

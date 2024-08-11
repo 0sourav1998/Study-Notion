@@ -4,17 +4,16 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Player, BigPlayButton } from "video-react";
 import "video-react/dist/video-react.css";
 import IconBtn from "../../../common/IconButton";
+import {markLectureAsComplete} from '../../../../services/operations/courseDetailsAPI'
+import { updateCompletedLectures } from "../../../../slices/viewCourseSlice";
+import { setCompletedVideos } from "../../../../slices/completedVideos";
 
 const VideoDetails = () => {
   const { courseId, sectionId, subSectionId } = useParams();
   const { courseEntireData, completedLectures, courseSectionData } =
     useSelector((state) => state.viewCourse);
-  console.log(
-    "courseEntireData,completedLectures,courseSectionData....................",
-    courseEntireData,
-    completedLectures,
-    courseSectionData
-  );
+    
+  
   const [videoEnded, setVideoEnded] = useState(false);
   const playerRef = useRef();
   const dispatch = useDispatch();
@@ -153,7 +152,18 @@ const VideoDetails = () => {
       return false;
     }
   };
-  const handleMarkAsComplete = () => {};
+  const handleMarkAsComplete = async() => {
+    setLoading(true)
+    const response = await markLectureAsComplete({
+      courseId : courseId ,
+      subSectionId : subSectionId
+    },token)
+    setLoading(false)
+    if(response){
+      dispatch(updateCompletedLectures(subSectionId));
+      dispatch(setCompletedVideos(subSectionId))
+    }
+  };
   return <div className="flex flex-col gap-5 text-white ">
     {!videoData ? (
       <div>No Data Found </div>
@@ -175,7 +185,7 @@ const VideoDetails = () => {
               backgroundImage:
                 "linear-gradient(to top, rgb(0, 0, 0), rgba(0,0,0,0.7), rgba(0,0,0,0.5), rgba(0,0,0,0.1)",
             }}
-            className="full absolute inset-0 z-[100] grid h-full place-content-center font-inter"
+            className="full absolute inset-0 z-[100] grid h-full place-content-center font-inter gap-6"
           >
             {/* {console.log("completed Lectures 2",completedLectures)} */}
             {!completedLectures.includes(subSectionId) && (
@@ -183,7 +193,7 @@ const VideoDetails = () => {
                 disabled={loading}
                 onclick={() => handleMarkAsComplete()}
                 text={!loading ? "Mark As Completed" : "Loading..."}
-                customClasses="text-xl max-w-max px-4 mx-auto"
+                customClasses="text-xl max-w-max px-4 mx-auto mb-4"
               />
             )}
             <IconBtn

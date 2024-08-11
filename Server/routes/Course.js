@@ -45,6 +45,11 @@ const {
     getAllReviews,
   } = require("../controllers/RatingAndReview")
 
+  const {
+    updateCourseProgress,
+    fetchCourseProgress
+  } = require("../controllers/courseProgress")
+
 // ********************************************************************************************************
 //                                      Course routes
 // ********************************************************************************************************
@@ -73,6 +78,10 @@ router.get("/getInstructorCourses", auth, isInstructor, getInstructorCourses)
 router.get("/getAllCourses", getAllCourses)
 // Get Details for a Specific Courses
 router.post("/getCourseDetails", getCourseDetails)
+
+router.post("/updateCourseProgress",auth,isStudent,updateCourseProgress) ;
+
+router.get("/fetchCourseProgress",auth,isStudent,fetchCourseProgress)
 
 // ********************************************************************************************************
 //                                      Category routes (Only by Admin)
