@@ -20,6 +20,11 @@ const VideoDetailsSidebar = ({ setReviewModal }) => {
     completedLectures,
     totalNoOfLectures,
   } = useSelector((state) => state.viewCourse);
+
+  const handleAddReview = () => {
+    console.log("I am inside Add handleAddReview")
+    setReviewModal(true);
+}
   console.log(
     "courseSectionData,courseEntireData,completedLectures,totalNoOfLectures",
     courseSectionData,
@@ -29,6 +34,7 @@ const VideoDetailsSidebar = ({ setReviewModal }) => {
   );
 
   const activeOrNot = () => {
+    if (!Array.isArray(courseSectionData)) return;
     const currentSectionIndex = courseSectionData.findIndex(
       (data) => data._id === sectionId
     );
@@ -63,14 +69,14 @@ const VideoDetailsSidebar = ({ setReviewModal }) => {
             <button>
               <IconBtn
                 text="Add A Review"
-                onclick={() => setReviewModal(true)}
+                onclick={handleAddReview}
               />
             </button>
           </div>
           <div className="flex flex-col">
             <p>{courseEntireData?.courseName}</p>
             <p className="text-sm font-semibold text-richblack-500">
-              {completedLectures.length} / {totalNoOfLectures}
+              {completedLectures?.length} / {totalNoOfLectures}
             </p>
           </div>
         </div>

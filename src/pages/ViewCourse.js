@@ -4,12 +4,14 @@ import { Outlet, useParams } from 'react-router-dom'
 import { getFullDetailsOfCourse } from '../services/operations/courseDetailsAPI';
 import VideoDetailsSidebar from '../components/core/Dashboard/ViewCourse/VideoDetailsSidebar';
 import { setCompletedLectures, setCourseSectionData, setEntireCourseData, setTotalNoOfLectures } from '../slices/viewCourseSlice';
+import ReviewConfirmationModal from '../components/core/Dashboard/ViewCourse/ReviewConfirmationModal';
 
 const ViewCourse = () => {
     const {user} = useSelector((state)=>state.profile) ;
     const {token} = useSelector((state)=>state.auth) ;
     const dispatch = useDispatch();
-    const [reviewModal,setReviewModal] = useState(null) ;
+    const [reviewModal,setReviewModal] = useState(false) ;
+    console.log("Review Modal............",reviewModal)
     const {courseId} = useParams();
     console.log("Course Id.........",courseId)
 
@@ -29,17 +31,19 @@ const ViewCourse = () => {
       fetchCourseFullDetails()
     },[])
   return (
-   <>
+   <div className="flex">
    <div>
       <VideoDetailsSidebar setReviewModal={setReviewModal}/>
    </div>
-   <div>
+   <div className="h-[calc(100vh-3.5rem)] flex-1 overflow-auto">
+   <div className='mt-6'>
      <Outlet/>
    </div>
-   {/* {
-    reviewModal && <ReviewConfirmationModal modalData={reviewModal}/>
-   } */}
-   </>
+   </div>
+   {
+    reviewModal && <ReviewConfirmationModal setReviewModal={setReviewModal}/>
+   }
+   </div>
   )
 }
 
