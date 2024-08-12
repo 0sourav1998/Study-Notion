@@ -22,7 +22,9 @@ exports.createSubSection = async (req, res) => {
       title: title,
       description: description,
       videoUrl: videoDetails.secure_url,
+      timeDuration : videoDetails.duration
     });
+    console.log("New Sub Section",newSubSection)
     const updatedSection = await Section.findByIdAndUpdate(
       { _id: sectionId },
       { $push: { subSection: newSubSection._id } },

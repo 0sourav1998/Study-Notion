@@ -21,7 +21,7 @@ exports.fetchCourseProgress = async(req,res)=>{
 
 exports.updateCourseProgress = async (req, res) => {
   const { courseId, subSectionId } = req.body;
-  const { userId } = req.user.id;
+  const userId  = req.user.id;
   try {
     const SubSection = await SubSectionModal.findById({ _id: subSectionId });
     if (!SubSection) {
