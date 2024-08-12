@@ -22,6 +22,7 @@ import Catalog from "./pages/Catalog";
 import CourseDetails from "./pages/CourseDetails";
 import ViewCourse from "./pages/ViewCourse";
 import VideoDetails from "./components/core/Dashboard/ViewCourse/VideoDetails";
+import Instructor from "./components/core/Dashboard/InstructorDashboard/Instructor";
 
 function App() {
   const { user } = useSelector((state) => state.profile);
@@ -54,6 +55,7 @@ function App() {
           {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
             <>
               <Route path="/dashboard/add-course" element={<AddCourse />} />
+              <Route path="dashboard/instructor" element={<Instructor />} />
               <Route path="/dashboard/my-courses" element={<MyCourses />} />
               <Route
                 path="/dashboard/edit-course/:courseId"

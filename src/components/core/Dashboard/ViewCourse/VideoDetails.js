@@ -21,6 +21,7 @@ const VideoDetails = () => {
   const location = useLocation();
   const { token } = useSelector((state) => state.auth);
   const [videoData, setVideoData] = useState([]);
+  console.log("Video Data ...................",videoData)
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -38,7 +39,10 @@ const VideoDetails = () => {
         const filteredVideo = filteredSection?.[0]?.subSection?.filter(
           (subSection) => subSection._id === subSectionId
         );
-        console.log("Video Data.....", filteredVideo);
+        if (filteredSection.length === 0 || !filteredSection[0]?.subSection) {
+          console.error("Section or sub-section not found");
+          return;
+        }
         setVideoData(filteredVideo);
         setVideoEnded(false);
       }
@@ -232,9 +236,8 @@ const VideoDetails = () => {
         )}
       </Player>
     )}
-
-    <h1 className="mt-4 text-3xl font-semibold">{videoData?.title}</h1>
-    <p className="pt-2 pb-6">{videoData?.description}</p>
+    <h1 className="mt-4 text-3xl font-semibold ml-4 text-richblack-5">{videoData?.[0]?.title}</h1>
+    <p className="pt-2 ml-4 pb-6">{videoData?.[0]?.description}</p>
   </div>;
 };
 

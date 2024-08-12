@@ -79,7 +79,7 @@ export async function getInstructorStats(token) {
       GET_INSTRUCTOR_STATS_DATA,
       null,
       {
-        Authorisation: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       }
     );
     // console.log("RESPONSE.....",response)

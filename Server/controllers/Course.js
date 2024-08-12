@@ -374,7 +374,9 @@ exports.deleteAllCourses = async (req, res) => {
     console.log(userId);
     const user = await User.findById(userId).populate("courses");
     const courses = await Course.deleteMany({ instructor: user._id });
-    const userDetails = await User.findByIdAndUpdate(userId, { $set: { courses: [] } } , { new: true });
+    await User.findByIdAndUpdate(userId, { $set: { courses: [] } } , { new: true });
+    await Section.deleteMany({})
+    await SubSection.deleteMany({})
     return res.status(200).json({
       success: true,
       message: "All Courses Deleted Successfully",

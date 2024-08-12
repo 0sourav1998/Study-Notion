@@ -3,6 +3,7 @@ const User = require("../models/User");
 const CourseProgress = require("../models/CourseProgress") ;
 const { convertSecondsToDuration } = require("../utils/secToDuration");
 const { default: mongoose } = require("mongoose");
+const Course = require("../models/Course");
 
 // Method for updating a profile
 exports.updateProfile = async (req, res) => {
@@ -171,5 +172,33 @@ exports.getEnrolledCourses = async (req, res) => {
       success: false,
       message: error.message,
     });
+  }
+};
+
+
+exports.instructorStats = async (req, res) => {
+  const instructorId = req.user.id;
+  try {
+    const allCourses = await Course.find({ instructor: instructorId });
+
+    const courseData = allCourses.map((course) => {
+      const totalEnrolledStudents = course.studentEnrolled.length;
+      const totalAmoutGenerated = course.studentEnrolled.length * course.price;
+      const courseDataWithStats = {
+        _id: course._id,
+        courseName: course.courseName,
+        courseDescription: course.courseDescription,
+        totalEnrolledStudents,
+        totalAmoutGenerated,
+      };
+      return courseDataWithStats;
+    });
+    return res.status(200).json({
+      success: true,
+      message: "Details fetched Successfully",
+      courses: courseData,
+    });
+  } catch (error) {
+    console.log(error.message);
   }
 };
