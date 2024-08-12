@@ -37,7 +37,7 @@ const RequirementFields = ({
           id={name}
           value={requirement}
           onChange={(e) => setRequirement(e.target.value)}
-          className="form-style w-full text-black"
+          className="form-style w-full text-black p-2"
         />
         <button
           onClick={addRequirements}

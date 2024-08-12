@@ -164,7 +164,7 @@ const CourseInformationForm = () => {
           id="courseTitle"
           placeholder="Enter Course Name"
           {...register("courseTitle", { required: true })}
-          className="form-style w-full p-1 text-black"
+          className="form-style w-full p-2 text-black"
         />
         {errors.courseTitle && (
           <span className="ml-2 text-xs tracking-wide text-pink-200">
@@ -216,7 +216,7 @@ const CourseInformationForm = () => {
           id="courseCategory"
           defaultValue=""
           {...register("courseCategory", { required: true })}
-          className="form-style w-full p-1 text-black"
+          className="form-style w-full p-2 text-black"
         >
           <option value="" disabled>
             Choose a Category
@@ -257,7 +257,7 @@ const CourseInformationForm = () => {
           id="coursebenefits"
           placeholder="Enter Benefits of the course"
           {...register("courseBenefits", { required: true })}
-          className="form-style resize-x-none min-h-[130px] w-full text-black"
+          className="form-style resize-x-none min-h-[130px] w-full text-black p-2"
         />
         {errors.courseBenefits && (
           <span className="ml-2 text-xs tracking-wide text-pink-200">Benefits of the course are required</span>

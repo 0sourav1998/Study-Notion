@@ -94,7 +94,7 @@ export default function ChipInput({
           type="text"
           placeholder={placeholder}
           onKeyDown={handleKeyDown}
-          className="form-style w-full text-black"
+          className="form-style w-full text-black  p-2"
         />
       </div>
       {/* Render an error message if the input is required and not filled */}

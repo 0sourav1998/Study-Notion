@@ -23,12 +23,12 @@ const RenderStep = () => {
     },
   ];
   return (
-    <div>
-      <div className="relative mb-2 flex w-full justify-center">
+    <div className="flex flex-col justify-center">
+      <div className="relative mb-2  flex w-[90%] justify-between">
         {steps.map((item) => (
           <div className="flex flex-col items-center " key={item.id}>
             <button
-              className={`grid cursor-default aspect-square w-[34px] place-items-center rounded-full border-[1px] ${
+              className={`grid cursor-default aspect-square w-[34px] ml-12 place-items-center rounded-full border-[1px] ${
                 step === item.id
                   ? "border-yellow-50 bg-yellow-900 text-yellow-50"
                   : "border-richblack-700 bg-richblack-800 text-black"

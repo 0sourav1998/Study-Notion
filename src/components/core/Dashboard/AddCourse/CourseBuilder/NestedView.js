@@ -66,16 +66,6 @@ const NestedView = ({ handleChangeEditSectionName }) => {
               </div>
               <div className="flex items-center gap-x-3">
                 <button
-                  onClick={() =>
-                    handleChangeEditSectionName(
-                      section._id,
-                      section.sectionName
-                    )
-                  }
-                >
-                  <MdEdit className="text-xl text-richblack-300" />
-                </button>
-                <button
                   onClick={() => {
                     console.log("Delete button clicked"); // Debug log
                     setConfirmationModal({
