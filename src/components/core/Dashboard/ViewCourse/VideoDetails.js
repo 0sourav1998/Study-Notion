@@ -21,7 +21,6 @@ const VideoDetails = () => {
   const location = useLocation();
   const { token } = useSelector((state) => state.auth);
   const [videoData, setVideoData] = useState([]);
-  console.log("Video Data ...................",videoData)
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -35,7 +34,6 @@ const VideoDetails = () => {
         const filteredSection = courseSectionData?.filter(
           (section) => section._id === sectionId
         );
-        console.log("filteredSection", filteredSection);
         const filteredVideo = filteredSection?.[0]?.subSection?.filter(
           (subSection) => subSection._id === subSectionId
         );
@@ -59,7 +57,6 @@ const VideoDetails = () => {
       );
     const subSectionLength =
       courseSectionData?.[currentSectionIndex]?.subSection?.length;
-    // same section next video
     if (currentSubSectionIndex !== subSectionLength - 1) {
       const nextSubSectionId =
         courseSectionData?.[currentSectionIndex]?.subSection?.[
@@ -69,7 +66,6 @@ const VideoDetails = () => {
         `/view-course/${courseId}/section/${sectionId}/subSection/${nextSubSectionId}`
       );
     } else {
-      //next section first video
       const currentSectionId = courseSectionData?.[currentSectionIndex + 1]._id;
       const currentSubSectionId =
         courseSectionData?.[currentSectionIndex + 1]?.subSection?.[0]._id;
@@ -82,17 +78,9 @@ const VideoDetails = () => {
     const currentSectionIndex = courseSectionData?.findIndex(
       (data) => data._id === sectionId
     );
-    console.log(
-      "SECTION>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",
-      currentSectionIndex
-    );
     const currentSubSectionIndex = courseSectionData?.[
       currentSectionIndex
     ]?.subSection?.findIndex((data) => data._id === subSectionId);
-    console.log(
-      "Sub SectionIndex>>>>>>>>>>>>>>>>>>>>>>>>>>>",
-      currentSubSectionIndex
-    );
     const subSectionLength =
       courseSectionData?.[currentSectionIndex]?.subSection?.length;
     if (currentSubSectionIndex !== 0) {
@@ -100,8 +88,6 @@ const VideoDetails = () => {
         courseSectionData?.[currentSectionIndex]?.subSection?.[
           currentSubSectionIndex
         ]._id;
-      console.log("SubSectionindex............", SubSectionId);
-      console.log("HELLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
       navigate(
         `/view-course/${courseId}/section/${sectionId}/subSection/${SubSectionId}`
       );
@@ -113,9 +99,6 @@ const VideoDetails = () => {
         courseSectionData?.[currentSectionIndex - 1].subSection?.[
           subSectionLength - 1
         ]._id;
-      console.log(
-        "HELLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO TWOOOOOOOOOOOOOOOOOOOOOOO"
-      );
       navigate(
         `/view-course/${courseId}/section/${prevSectionId}/subSection/${prevSubSectionId}`
       );
@@ -182,7 +165,6 @@ const VideoDetails = () => {
         fluid="true"
       >
         <BigPlayButton position="center" />
-        {/* Render When Video Ends */}
         {videoEnded && (
           <div
             style={{
@@ -191,7 +173,7 @@ const VideoDetails = () => {
             }}
             className="full absolute inset-0 z-[100] grid h-full place-content-center font-inter gap-6"
           >
-            {/* {console.log("completed Lectures 2",completedLectures)} */}
+            
             {!completedLectures.includes(subSectionId) && (
               <IconBtn
                 disabled={loading}
@@ -204,7 +186,6 @@ const VideoDetails = () => {
               disabled={loading}
               onclick={() => {
                 if (playerRef?.current) {
-                  // set the current time of the video to 0
                   playerRef?.current?.seek(0);
                   setVideoEnded(false);
                 }

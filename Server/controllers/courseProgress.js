@@ -6,7 +6,6 @@ const SubSectionModal = require("../models/SubSection");
 exports.fetchCourseProgress = async(req,res)=>{
   try{
     const fetchCourseProgressData = await CourseProgress.find({}).populate("completedVideo")
-    console.log("fetchCourseProgressData",fetchCourseProgressData)
     if(fetchCourseProgressData){
       return res.status(200).json({
         success : true ,

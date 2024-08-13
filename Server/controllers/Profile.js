@@ -24,13 +24,11 @@ exports.updateProfile = async (req, res) => {
 
     userDetails.firstName = firstName;
     userDetails.lastName = lastName;
-    // Update the profile fields
     profile.dateOfBirth = dateOfBirth;
     profile.about = about;
     profile.gender = gender;
     profile.contactNumber = contactNumber;
 
-    // Save the updated profile
     await profile.save();
     await userDetails.save();
 
@@ -44,7 +42,6 @@ exports.updateProfile = async (req, res) => {
       updatedUserDetails,
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
       success: false,
       error: error.message,
@@ -54,7 +51,6 @@ exports.updateProfile = async (req, res) => {
 
 exports.deleteAccount = async (req, res) => {
   try {
-    console.log("Printing ID: ", req.user.id);
     const id = req.user.id;
 
     const user = await User.findById({ _id: id });
@@ -64,17 +60,14 @@ exports.deleteAccount = async (req, res) => {
         message: "User not found",
       });
     }
-    // Delete Assosiated Profile with the User
     await Profile.findByIdAndDelete({ _id: user.additionalDetails });
-    // TODO: Unenroll User From All the Enrolled Courses
-    // Now Delete User
+    
     await User.findByIdAndDelete({ _id: id });
     res.status(200).json({
       success: true,
       message: "User deleted successfully",
     });
   } catch (error) {
-    console.log(error);
     res
       .status(500)
       .json({ success: false, message: "User Cannot be deleted successfully" });
@@ -87,7 +80,6 @@ exports.getAllUserDetails = async (req, res) => {
     const userDetails = await User.findById(id)
       .populate("additionalDetails")
       .exec();
-    console.log(userDetails);
     res.status(200).json({
       success: true,
       message: "User Data fetched successfully",
@@ -136,12 +128,10 @@ exports.getEnrolledCourses = async (req, res) => {
         SubsectionLength +=
           userDetails.courses[i].courseContent[j].subSection.length;
       }
-      console.log(typeof userId)
       let courseProgressCount = await CourseProgress.findOne({
         courseId: userDetails.courses[i]._id,
         userId:new mongoose.Types.ObjectId(userId),
       }).exec();
-      console.log("COurse Progress..............",courseProgressCount)
       courseProgressCount = courseProgressCount?.completedVideo.length;
       if (SubsectionLength === 0) {
         userDetails.courses[i].progressPercentage = 100;
@@ -162,7 +152,6 @@ exports.getEnrolledCourses = async (req, res) => {
       });
     }
 
-    console.log("User Details .................", userDetails.courses);
     return res.status(200).json({
       success: true,
       data: userDetails.courses,

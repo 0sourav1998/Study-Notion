@@ -43,12 +43,8 @@ const VideoDetailsSidebar = ({ setReviewModal }) => {
       courseSectionData[currentSectionIndex]?.subSection?.[
         currentSubSectionIndex
       ]?._id;
-    //set current section here
     setActiveStatus(courseSectionData?.[currentSectionIndex]?._id);
-    // setActiveStatus(sectionId) ;
-    //set current sub-section here
     setVideoBarActive(activeSubSectionId);
-    // setVideoBarActive(subSectionId)
   };
   useEffect(() => {
     activeOrNot();
@@ -85,9 +81,6 @@ const VideoDetailsSidebar = ({ setReviewModal }) => {
                   <p>{section?.sectionName}</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  {/* <span className="text-[12px] font-medium">
-                  Lession {course?.subSection.length}
-                </span> */}
                   <span
                     className={`${
                       activeStatus === section?.sectionName

@@ -22,11 +22,9 @@ export default function CourseReviewModal({ setReviewModal }) {
   useEffect(() => {
     setValue("courseExperience", "")
     setValue("courseRating", 0)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const ratingChanged = (newRating) => {
-    // console.log(newRating)
     setValue("courseRating", newRating)
   }
 
@@ -45,14 +43,14 @@ export default function CourseReviewModal({ setReviewModal }) {
   return (
     <div className="fixed inset-0 z-[1000] !mt-0 flex h-screen w-screen items-center justify-center overflow-auto bg-white bg-opacity-10 backdrop-blur-sm">
       <div className="my-10 w-11/12 max-w-[700px] rounded-lg border border-richblack-400 bg-richblack-800">
-        {/* Modal Header */}
+        
         <div className="flex items-center justify-between rounded-t-lg bg-richblack-700 p-5">
           <p className="text-xl font-semibold text-richblack-5">Add Review</p>
           <button onClick={() => setReviewModal(false)}>
             <RxCross2 className="text-2xl text-richblack-5" />
           </button>
         </div>
-        {/* Modal Body */}
+        
         <div className="p-6">
           <div className="flex items-center justify-center gap-x-4">
             <img

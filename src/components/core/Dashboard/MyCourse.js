@@ -25,7 +25,6 @@ export default function MyCourse() {
       }
     }
     fetchCourses()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const deleteAll =async()=>{

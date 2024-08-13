@@ -1,15 +1,11 @@
-const User = require("../models/User");
+
 const jwt = require("jsonwebtoken");
 
 exports.auth = async (req, res, next) => {
   try {
-    //extract token
-    console.log("BEFORE ToKEN EXTRACTION" );
-        //extract token
         const token = req.cookies.token 
                         || req.body.token 
                         || req.header("Authorization").replace("Bearer ", "");
-        console.log("AFTER ToKEN EXTRACTION",token);
 
     if (!token) {
       return res.status(403).json({
@@ -18,11 +14,8 @@ exports.auth = async (req, res, next) => {
       });
     }
     try {
-      // verify the token
       const decode = jwt.verify(token, process.env.JWT_SECRET);
-      console.log("decode",decode);
       req.user = decode;
-      console.log("USER WITH DECODE",req.user)
     } catch (error) {
       return res.status(400).json({
         success: false,
@@ -38,7 +31,6 @@ exports.auth = async (req, res, next) => {
   }
 };
 
-//isStudent
 exports.isStudent = async (req, res, next) => {
     try{
            if(req.user.accountType !== "Student") {
@@ -57,8 +49,6 @@ exports.isStudent = async (req, res, next) => {
     }
    }
    
-   
-   //isInstructor
    exports.isInstructor = async (req, res, next) => {
        try{
               if(req.user.accountType !== "Instructor") {
@@ -77,12 +67,9 @@ exports.isStudent = async (req, res, next) => {
        }
       }
    
-   
-   //isAdmin
    exports.isAdmin = async (req, res, next) => {
        try{    
-              console.log("Printing AccountType ", req.user.accountType);
-              if(req.user.accountType !== "Admin") {
+           if(req.user.accountType !== "Admin") {
                   return res.status(401).json({
                       success:false,
                       message:'This is a protected route for Admin only',

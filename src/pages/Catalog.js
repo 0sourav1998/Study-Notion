@@ -9,7 +9,6 @@ import CourseSlider from "../components/core/Catelog/CourseSlider";
 
 const Catalog = () => {
   const { catalogName } = useParams();
-  console.log("Catelog Name..................",catalogName)
   const [catalogPageData, setCatalogPageData] = useState(null);
   const [catagoryId, setCatagoryId] = useState("");
   useEffect(() => {
@@ -18,23 +17,19 @@ const Catalog = () => {
         "GET",
         categories.CATEGORIES_API
       );
-      // console.log(allCatagories)
       const catagory_Id = allCatagories?.data?.data.filter(
         (ct) => ct.name.split(" ").join("-").toLowerCase() === catalogName
       )[0]._id;
-      console.log(catagory_Id);
       setCatagoryId(catagory_Id);
     };
     catagoryID();
   }, [catalogName]);
 
-  console.log("Catelog Page Data .....",catalogPageData)
 
   useEffect(() => {
     const getCategoryDetails = async () => {
       try {
         const res = await getCatalogaPageData(catagoryId);
-        console.log("PRinting res: ", res);
         setCatalogPageData(res);
       } catch (error) {
         console.log(error);
@@ -62,7 +57,6 @@ const Catalog = () => {
           </p>
         </div>
       </div>
-      {/* Section-1*/}
       <div>
         <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
           <div className="text-white text-3xl">Courses to get Started</div>

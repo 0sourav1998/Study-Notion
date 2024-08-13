@@ -27,7 +27,6 @@ const ExploreMore = () => {
 
   return (
     <div>
-      {/* Explore more section */}
       <div>
         <div className="text-4xl font-semibold text-center my-10">
           Unlock the
@@ -37,8 +36,6 @@ const ExploreMore = () => {
           </p>
         </div>
       </div>
-
-      {/* Tabs Section */}
       <div className="flex lg:flex-row flex-col lg:gap-5 -mt-5 mx-auto w-11/12 lg:w-full bg-richblack-50 lg:bg-richblack-800 lg:text-richblack-200 text-richblack-900 p-1 lg:rounded-full mb-8 lg:mb-0 font-medium drop-shadow-[0_1.5px_rgba(255,255,255,0.25)]">
         {tabsName.map((ele, index) => {
           return (
@@ -58,7 +55,6 @@ const ExploreMore = () => {
       </div>
       <div className="hidden lg:block lg:h-[200px]"></div>
 
-      {/* Cards Group */}
       <div className="lg:absolute gap-10 justify-center lg:gap-0 flex lg:justify-between flex-wrap w-full lg:bottom-[0] lg:left-[50%] lg:translate-x-[-50%] lg:translate-y-[50%] text-black lg:mb-0 mb-7 lg:px-0 px-3">
         {courses.map((ele, index) => {
           return (

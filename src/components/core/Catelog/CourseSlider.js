@@ -6,7 +6,6 @@ import "swiper/css/free-mode"
 import "swiper/css/pagination"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Pagination } from 'swiper/modules'
-// import { FreeMode, Pagination } from 'swiper';
 
 
 const CourseSlider = ({courses}) => {

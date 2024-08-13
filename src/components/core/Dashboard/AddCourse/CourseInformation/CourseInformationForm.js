@@ -28,7 +28,6 @@ const CourseInformationForm = () => {
 
   const dispatch = useDispatch();
   const { course, editCourse } = useSelector((state) => state.course);
-  console.log("Course.....",course)
   const [loading, setLoading] = useState(false);
   const [courseCategories, setCourseCategories] = useState([]);
 
@@ -71,7 +70,6 @@ const CourseInformationForm = () => {
   };
 
   const onSubmit = async (data) => {
-    console.log("data............................", data);
 
     if (editCourse) {
       if (isFormUpdated()) {
@@ -121,7 +119,6 @@ const CourseInformationForm = () => {
       }
       return;
     }
-    //create a course
 
     const formData = new FormData();
     formData.append("courseName", data.courseTitle);
@@ -130,25 +127,17 @@ const CourseInformationForm = () => {
     formData.append("tag", JSON.stringify(data.courseTags))
     formData.append("whatYouWillLearn", data.courseBenefits);
     formData.append("category", data.courseCategory);
-    console.log(".....................",data.courseCategory.id)
     formData.append("instructions", JSON.stringify(data.courseRequirements));
     formData.append("status", COURSE_STATUS.DRAFT);
     formData.append("thumbnailImage", data.courseImage)
-    console.log("after ..........", formData);
     setLoading(true);
-    console.log("BEFORE add course API call");
-    console.log("PRINTING FORMDATA", formData);
     const result = await addCourseDetails(formData, token);
-    console.log("result",result)
 
     if (result) {
       dispatch(setStep(2))
       dispatch(setCourse(result));
-      console.log("step............",step)
     }
     setLoading(false);
-    console.log("PRINTING FORMDATA", formData);
-    console.log("PRINTING result", result);
   };
 
   return (
@@ -228,7 +217,6 @@ const CourseInformationForm = () => {
         </select>
         {errors.courseCategories && <span className="ml-2 text-xs tracking-wide text-pink-200">Course Category is required</span>}
       </div>
-      {/* HW */}
       <ChipInput
             label="Tags"
             name="courseTags"
@@ -238,8 +226,6 @@ const CourseInformationForm = () => {
             setValue={setValue}
             getValues = {getValues}
         />
-        {/* HW */}
-      {/* create a component for uploading and showing preview of media */} 
       <Upload
         name="courseImage"
         label="Course Thumbnail"

@@ -21,7 +21,6 @@ const NestedView = ({ handleChangeEditSectionName }) => {
   const [addSubSection, setAddSubsection] = useState(null);
   const [viewSubSection, setViewSubSection] = useState(null);
   const [editSubSection, setEditSubSection] = useState(null);
-  // to keep track of confirmation modal
   const [confirmationModal, setConfirmationModal] = useState(null);
 
   const handleDeleleSection = async (sectionId) => {
@@ -38,12 +37,9 @@ const NestedView = ({ handleChangeEditSectionName }) => {
   const handleDeleleSubSection = async (sectionId, subSectionId) => {
     const result = await deleteSubSection({ subSectionId, sectionId, token });
     if (result) {
-      // update the structure of course
-      console.log("result.............", result);
       const updatedCourseContent = course.courseContent.map((section) =>
         section._id === sectionId ? result : section
       );
-      console.log("updated course..................", updatedCourseContent);
       const updatedCourse = { ...course, courseContent: updatedCourseContent };
       dispatch(setCourse(updatedCourse));
     }
@@ -67,7 +63,6 @@ const NestedView = ({ handleChangeEditSectionName }) => {
               <div className="flex items-center gap-x-3">
                 <button
                   onClick={() => {
-                    console.log("Delete button clicked"); // Debug log
                     setConfirmationModal({
                       text1: "Delete this Section?",
                       text2: "All the lectures in this section will be deleted",

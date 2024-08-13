@@ -4,11 +4,10 @@ import { countryCode } from "../../../data/countrycode";
 
 const ContactFormSection = () => {
   const handleMessageSubmit = (data) => {
-    console.log(data);
   };
 
   const defaultValues = {
-    countryCode: "+91", // Default value for the country code
+    countryCode: "+91",
   };
 
   const {

@@ -1,5 +1,5 @@
 export default function GetAvgRating(ratingArr) {
-  console.log(ratingArr)
+  
     if (ratingArr?.length === 0 || ratingArr === undefined) return 0
     const totalReviewCount = ratingArr?.reduce((acc, curr) => {
       acc += curr.rating

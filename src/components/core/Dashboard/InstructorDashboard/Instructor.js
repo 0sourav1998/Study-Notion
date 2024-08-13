@@ -16,8 +16,6 @@ const Instructor = () => {
       setLoading(true);
       const instructorStats = await getInstructorStats(token);
       const courseDetails = await fetchInstructorCourses(token);
-      console.log("instructorStats.........",instructorStats)
-      console.log("CourseDetails.........",courseDetails)
       if (instructorStats.length) setInstructorStats(instructorStats);
       if (courseDetails) {
         setCourses(courseDetails);
@@ -43,7 +41,6 @@ const Instructor = () => {
       ) : courses.length > 0 ? (
         <div>
           <div className="my-4 flex h-[450px] space-x-4">
-            {/* Render chart / graph */}
             {totalAmount > 0 || totalStudents > 0 ? (
               <InstructorChart courses={instructorStats} />
             ) : (
@@ -54,7 +51,6 @@ const Instructor = () => {
                 </p>
               </div>
             )}
-            {/* Total Statistics */}
             <div className="flex min-w-[250px] flex-col rounded-md bg-richblack-800 p-6">
               <p className="text-lg font-bold text-richblack-5">Statistics</p>
               <div className="mt-4 space-y-4">
@@ -80,7 +76,6 @@ const Instructor = () => {
             </div>
           </div>
           <div className="rounded-md bg-richblack-800 p-6">
-            {/* Render 3 courses */}
             <div className="flex items-center justify-between">
               <p className="text-lg font-bold text-richblack-5">Your Courses</p>
               <Link to="/dashboard/my-courses">
@@ -88,7 +83,6 @@ const Instructor = () => {
               </Link>
             </div>
             <div className="my-4 flex items-start space-x-6">
-                {console.log("Courses..........",courses)}
               {courses.slice(0, 3).map((course) => (
                 <div key={course._id} className="w-1/3">
                   <img
@@ -102,7 +96,6 @@ const Instructor = () => {
                     </p>
                     <div className="mt-1 flex items-center space-x-2">
                       <p className="text-xs font-medium text-richblack-300">
-                        {/* {console.log(course.studentsEnroled.length)} */}
                         {course.studentsEnrolled?.length === 0 ? 0 : course.studentsEnrolled?.length} students
                       </p>
                       <p className="text-xs font-medium text-richblack-300">

@@ -33,18 +33,14 @@ export default function PublishCourse() {
   }
 
   const handleCoursePublish = async () => {
-    // check if form has been updated or not
     if (
       (course?.status === COURSE_STATUS.PUBLISHED &&
         getValues("public") === true) ||
       (course?.status === COURSE_STATUS.DRAFT && getValues("public") === false)
     ) {
-      // form has not been updated
-      // no need to make api call
       goToCourses()
       return
     }
-    console.log("courseStatus..........",course.status)
     const formData = new FormData()
     formData.append("courseId", course._id)
     const courseStatus = getValues("public")
@@ -60,7 +56,6 @@ export default function PublishCourse() {
   }
 
   const onSubmit = (data) => {
-    // console.log(data)
     handleCoursePublish()
   }
 
@@ -70,7 +65,6 @@ export default function PublishCourse() {
         Publish Settings
       </p>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {/* Checkbox */}
         <div className="my-6 mb-8">
           <label htmlFor="public" className="inline-flex items-center text-lg">
             <input
@@ -85,7 +79,6 @@ export default function PublishCourse() {
           </label>
         </div>
 
-        {/* Next Prev Button */}
         <div className="ml-auto flex max-w-max items-center gap-x-4">
           <button
             disabled={loading}

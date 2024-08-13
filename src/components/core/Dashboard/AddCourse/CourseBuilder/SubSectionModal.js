@@ -66,8 +66,6 @@ const SubSectionModal = ({
     setLoading(true);
     const result = await updateSubSection(formData, token)
     if (result) {
-      // console.log("result", result)
-      // update the structure of course
       const updatedCourseContent = course.courseContent.map((section) =>
         section._id === modalData.sectionId ? result : section
       )
@@ -103,7 +101,6 @@ const SubSectionModal = ({
       const updatedCourseContent = course.courseContent.map((section) =>
         section._id === modalData ? result : section
       )
-      console.log("updated course..................",updatedCourseContent)
       const updatedCourse = { ...course, courseContent: updatedCourseContent }
       dispatch(setCourse(updatedCourse))
     }
@@ -113,7 +110,6 @@ const SubSectionModal = ({
   return <div>
     <div className="fixed inset-0 z-[1000] !mt-0 grid h-screen w-screen place-items-center overflow-auto bg-white bg-opacity-10 backdrop-blur-sm">
       <div className="my-10 w-11/12 max-w-[700px] rounded-lg border border-richblack-400 bg-richblack-800">
-        {/* Modal Header */}
         <div className="flex items-center justify-between rounded-t-lg bg-richblack-700 p-5">
           <p className="text-xl font-semibold text-richblack-5">
             {view && "Viewing"} {add && "Adding"} {edit && "Editing"} Lecture
@@ -122,9 +118,8 @@ const SubSectionModal = ({
             <RxCross2 className="text-2xl text-richblack-5" />
           </button>
         </div>
-        {/* Modal Form */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 px-8 py-10">
-          {/* Lecture Video Upload */}
+          
           <Upload
             name="lectureVideo"
             label="Lecture Video"
@@ -135,7 +130,6 @@ const SubSectionModal = ({
             viewData={view ? modalData.videoUrl : null}
             editData={edit ? modalData.videoUrl : null}
           />
-          {/* Lecture Title */}
           <div className="flex flex-col space-y-2">
             <label className="text-sm text-richblack-5" htmlFor="lectureTitle">
               Lecture Title {!view && <sup className="text-pink-200">*</sup>}
@@ -153,7 +147,6 @@ const SubSectionModal = ({
               </span>
             )}
           </div>
-          {/* Lecture Description */}
           <div className="flex flex-col space-y-2">
             <label className="text-sm text-richblack-5" htmlFor="lectureDesc">
               Lecture Description {!view && <sup className="text-pink-200">*</sup>}

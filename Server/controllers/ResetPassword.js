@@ -13,14 +13,12 @@ exports.resetPasswordToken = async (req, res) => {
         message: "Email not registered",
       });
     } ;
-	console.log("User...............",user)
     const token = crypto.randomUUID();
     const updatedUser = await User.findOneAndUpdate(
       { email },
       { token: token, resetPasswordExpires: Date.now() + 3 * 60 * 1000 },
       { new: true }
     );
-    console.log("Updated User",updatedUser);
     const url = `http://localhost:3000/update-password/${token}`;
 
     await mailSender(

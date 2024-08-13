@@ -16,7 +16,6 @@ import ConfirmationModal from "../common/ConfirmationModal.js"
 
 function Navbar() {
   const { token } = useSelector((state) => state.auth) ;
-  console.log("Token",token)
   const { user } = useSelector((state) => state.profile)
   const { totalItems } = useSelector((state) => state.cart)
   const [confirmationModal,setConfirmationModal] = useState(null)
@@ -26,17 +25,13 @@ function Navbar() {
 
   const [subLinks, setSubLinks] = useState([])
   const [loading, setLoading] = useState(false) ;
-  console.log(".....................",subLinks)
 
   const fetchCategories = async()=>{
     const categories = await getAllCategory() ;
-    console.log(categories)
     setSubLinks(categories) ;
-    console.log("Sublink",subLinks)
   }
 
   const handleLogout =()=>{
-    console.log("Logged Out")
     dispatch(logout(navigate)) ;
     setConfirmationModal(null)
     navigate("/login") ;
@@ -46,8 +41,6 @@ function Navbar() {
   useEffect(() => {
     fetchCategories();
   }, [])
-
-  // console.log("sub links", subLinks)
 
   const matchRoute = (route) => {
     return matchPath({ path: route }, location.pathname)
@@ -60,11 +53,9 @@ function Navbar() {
       } transition-all duration-200`}
     >
       <div className="flex lg:flex-row  w-11/12 max-w-maxContent items-center justify-between">
-        {/* Logo */}
         <Link to="/">
           <img src={logo} alt="Logo" width={160} height={32} loading="lazy" />
         </Link>
-        {/* Navigation links */}
         <nav className="hidden md:block">
           <ul className="flex gap-x-6 text-richblack-25">
             {NavbarLinks.map((link, index) => (
@@ -96,7 +87,6 @@ function Navbar() {
                                   className="rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50"
                                   key={i}
                                 >
-                                    {console.log("sublink",subLink.name)}
                                   <p>{subLink.name}</p>
                                 </Link>
                               ))}
@@ -124,7 +114,6 @@ function Navbar() {
             ))}
           </ul>
         </nav>
-        {/* Login / Signup / Dashboard */}
         <div className="hidden items-center gap-x-4 md:flex">
           {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
             <Link to="/dashboard/cart" className="relative">

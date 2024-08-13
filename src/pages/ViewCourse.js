@@ -11,13 +11,10 @@ const ViewCourse = () => {
     const {token} = useSelector((state)=>state.auth) ;
     const dispatch = useDispatch();
     const [reviewModal,setReviewModal] = useState(false) ;
-    console.log("Review Modal............",reviewModal)
     const {courseId} = useParams();
-    console.log("Course Id.........",courseId)
 
     const fetchCourseFullDetails = async()=>{
-      const response = await getFullDetailsOfCourse(courseId,token) ;
-      console.log("Response of Course full details............",response) ;
+      const response = await getFullDetailsOfCourse(courseId,token) ; ;
       dispatch(setCourseSectionData(response?.courseDetails?.courseContent)) ;
       dispatch(setEntireCourseData(response?.courseDetails)) ;
       dispatch(setCompletedLectures(response?.completedVideos)) ;

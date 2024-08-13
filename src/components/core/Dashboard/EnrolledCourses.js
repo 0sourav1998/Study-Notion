@@ -16,9 +16,8 @@ export default function EnrolledCourses() {
       const res = await getUserEnrolledCourses(token);
 
       setEnrolledCourses(res);
-      console.log("RES>>>>>>>>>>>>",res)
     } catch (error) {
-      console.log("Could not fetch enrolled courses.")
+      console.error("Could not fetch enrolled courses.")
     }
   };
   useEffect(() => {
@@ -35,17 +34,14 @@ export default function EnrolledCourses() {
       ) : !enrolledCourses.length ? (
         <p className="grid h-[10vh] w-full place-content-center text-richblack-5">
           You have not enrolled in any course yet.
-          {/* TODO: Modify this Empty State */}
         </p>
       ) : (
         <div className="my-8 text-richblack-5">
-          {/* Headings */}
           <div className="flex rounded-t-lg bg-richblack-500 ">
             <p className="w-[45%] px-5 py-3">Course Name</p>
             <p className="w-1/4 px-2 py-3">Duration</p>
             <p className="flex-1 px-2 py-3">Progress</p>
           </div>
-          {/* Course Names */}
           {enrolledCourses.map((course, i, arr) => (
             <div
               className={`flex items-center border border-richblack-700 ${
@@ -61,7 +57,7 @@ export default function EnrolledCourses() {
                   )
                 }}
               >
-                {/* {console.log("Details........",course,course.courseContent?.[0],course.courseContent?.[0]?.subSection?.[0]?._id)} */}
+                
                 <img
                   src={course.thumbnail}
                   alt="course_img"

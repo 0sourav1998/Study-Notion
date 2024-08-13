@@ -29,7 +29,6 @@ const CourseDetails = () => {
     const getCourseFullDetails = async () => {
       try {
         const result = await fetchCourseDetails(courseId);
-        console.log("Printing CourseData-> ", result);
         setCourseData(result);
       } catch (error) {
         console.log("Could not fetch coursse details");
@@ -155,9 +154,6 @@ const CourseDetails = () => {
 
         <div className="flex gap-x-3 justify-between">
           <div className="flex flex-col w-[1080px]">
-            {/* <span className="text-3xl text-richblack-400">{courseContent.length} section(s)</span>
-
-            <span className="text-3xl">{totalNoOfLectures} lectures</span> */}
             <div className="py-4 w-full">
               {courseContent?.map((course, index) => (
                 <CourseAccordionBar
