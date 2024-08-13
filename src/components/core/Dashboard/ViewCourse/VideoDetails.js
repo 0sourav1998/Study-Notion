@@ -12,6 +12,7 @@ const VideoDetails = () => {
   const { courseId, sectionId, subSectionId } = useParams();
   const { courseEntireData, completedLectures, courseSectionData } =
     useSelector((state) => state.viewCourse);
+    const {completedVideo} = useSelector((state)=>state.completedVideos)
     
   
   const [videoEnded, setVideoEnded] = useState(false);
@@ -173,8 +174,7 @@ const VideoDetails = () => {
             }}
             className="full absolute inset-0 z-[100] grid h-full place-content-center font-inter gap-6"
           >
-            
-            {!completedLectures.includes(subSectionId) && (
+            {!completedVideo.includes(subSectionId) && (
               <IconBtn
                 disabled={loading}
                 onclick={() => handleMarkAsComplete()}
