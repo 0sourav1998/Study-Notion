@@ -71,7 +71,7 @@ const CourseBuilder = () => {
     setValue("sectionName", "");
   };
   return (
-    <div>
+    <div className="-mt-16">
       <form className="text-white " onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col">
           <label htmlFor="sectionName" className="mb-4">Section Name</label>

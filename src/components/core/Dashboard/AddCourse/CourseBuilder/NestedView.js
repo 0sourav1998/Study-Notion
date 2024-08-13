@@ -48,7 +48,7 @@ const NestedView = ({ handleChangeEditSectionName }) => {
   return (
     <>
       <div
-        className="rounded-lg bg-richblack-700 p-6 px-8 lg:mr-0 mr-6 lg:w-full w-[80%]"
+        className="rounded-lg bg-richblack-700 p-6 px-8 lg:mr-0 mr-6 lg:w-full w-[90%]"
         id="nestedViewContainer"
       >
         {course?.courseContent.map((section, index) => (
@@ -56,7 +56,7 @@ const NestedView = ({ handleChangeEditSectionName }) => {
             <summary className="flex cursor-pointer items-center justify-between border-b-2 border-b-richblack-600 py-2">
               <div className="flex items-center gap-x-3">
                 <RxDropdownMenu className="text-2xl text-richblack-50" />
-                <p className="font-semibold text-richblack-50">
+                <p className="lg:font-semibold font-semibol text-xs text-richblack-50">
                   {section.sectionName}
                 </p>
               </div>
@@ -87,7 +87,7 @@ const NestedView = ({ handleChangeEditSectionName }) => {
                 >
                   <div className="flex items-center gap-x-3 py-2 ">
                     <RxDropdownMenu className="text-2xl text-richblack-50" />
-                    <p className="font-semibold text-richblack-50">
+                    <p className="font-semibold text-xs text-richblack-50">
                       {data.title}
                     </p>
                   </div>

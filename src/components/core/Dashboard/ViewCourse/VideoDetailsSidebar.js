@@ -50,6 +50,10 @@ const VideoDetailsSidebar = ({ setReviewModal }) => {
     activeOrNot();
   }, [courseSectionData, courseEntireData, location.pathname]);
 
+  useEffect(()=>{
+
+  },[])
+
   return (
     <>
       <div className="flex h-[calc(100vh-3.5rem)] lg:w-[320px] w-[200px] max-w-[350px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800">
