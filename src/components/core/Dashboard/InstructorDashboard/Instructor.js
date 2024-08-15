@@ -28,11 +28,11 @@ const Instructor = () => {
   const totalStudents = instructorStats?.reduce((acc,curr)=>acc+curr.totalEnrolledStudents,0) ;
   return (
     <div>
-      <div className="space-y-2">
-        <h1 className="text-2xl font-bold text-richblack-5">
+      <div className="space-y-2 overflow-x-hidden">
+        <h1 className="sm:text-2xl text-lg font-bold text-richblack-5">
           Hi {user?.firstName} 👋
         </h1>
-        <p className="font-medium text-richblack-200">
+        <p className="sm:font-medium sm:text-sm text-xs text-richblack-200">
           Let's start something new
         </p>
       </div>
@@ -40,55 +40,55 @@ const Instructor = () => {
         <div className="spinner"></div>
       ) : courses.length > 0 ? (
         <div>
-          <div className="my-4 flex h-[450px] space-x-4">
+          <div className="my-4 flex sm:flex-row flex-col h-[450px] sm:space-x-4 space-x-0">
             {totalAmount > 0 || totalStudents > 0 ? (
               <InstructorChart courses={instructorStats} />
             ) : (
               <div className="flex-1 rounded-md bg-richblack-800 p-6">
-                <p className="text-lg font-bold text-richblack-5">Visualize</p>
-                <p className="mt-4 text-xl font-medium text-richblack-50">
+                <p className="sm:text-lg text-sm sm:font-bold font-semibold text-richblack-5">Visualize</p>
+                <p className="mt-4 sm:text-xl sm:font-medium text-lg font-normal text-richblack-50">
                   Not Enough Data To Visualize
                 </p>
               </div>
             )}
-            <div className="flex min-w-[250px] flex-col rounded-md bg-richblack-800 p-6">
-              <p className="text-lg font-bold text-richblack-5">Statistics</p>
+            <div className="flex sm:min-w-[250px] w-[100%] mt-4 mb-4 flex-col rounded-md bg-richblack-800 sm:p-6 p-2 sm:mr-0 mr-50px">
+              <p className="sm:text-lg sm:font-bold text-sm text-richblack-5">Statistics</p>
               <div className="mt-4 space-y-4">
                 <div>
-                  <p className="text-lg text-richblack-200">Total Courses</p>
-                  <p className="text-3xl font-semibold text-richblack-50">
+                  <p className="sm:text-lg text-sm text-richblack-200">Total Courses</p>
+                  <p className="sm:text-3xl text-xl font-semibold text-richblack-50">
                     {courses.length}
                   </p>
                 </div>
                 <div>
-                  <p className="text-lg text-richblack-200">Total Students</p>
-                  <p className="text-3xl font-semibold text-richblack-50">
+                  <p className="sm:text-lg text-sm text-richblack-200">Total Students</p>
+                  <p className="sm:text-3xl text-xl font-semibold text-richblack-50">
                     {totalStudents}
                   </p>
                 </div>
                 <div>
-                  <p className="text-lg text-richblack-200">Total Income</p>
-                  <p className="text-3xl font-semibold text-richblack-50">
+                  <p className="sm:text-lg text-sm text-richblack-200">Total Income</p>
+                  <p className="sm:text-3xl text-xl font-semibold text-richblack-50">
                     Rs. {totalAmount}
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="rounded-md bg-richblack-800 p-6">
-            <div className="flex items-center justify-between">
-              <p className="text-lg font-bold text-richblack-5">Your Courses</p>
+          <div className="rounded-md bg-richblack-800 sm:p-6 p-2 sm:mt-0 mt-[120px]">
+            <div className="flex sm:flex-row flex-col items-center justify-between">
+              <p className="sm:text-lg text-sm font-bold text-richblack-5">Your Courses</p>
               <Link to="/dashboard/my-courses">
-                <p className="text-xs font-semibold text-yellow-50">View All</p>
+                <p className="sm:text-xs text-[8px] font-semibold text-yellow-50">View All</p>
               </Link>
             </div>
-            <div className="my-4 flex items-start space-x-6">
+            <div className="my-4 flex sm:flex-row flex-col gap-y-3 sm:items-start items-center">
               {courses.slice(0, 3).map((course) => (
-                <div key={course._id} className="w-1/3">
+                <div key={course._id} className="sm:w-1/3 w-full">
                   <img
                     src={course.thumbnail}
                     alt={course.courseName}
-                    className="h-[201px] w-full rounded-md object-cover"
+                    className="sm:h-[201px] sm:w-full h-[100px] w-[98%] rounded-md object-cover"
                   />
                   <div className="mt-3 w-full">
                     <p className="text-sm font-medium text-richblack-50">

@@ -143,17 +143,17 @@ const CourseInformationForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-8 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6 mr-8 lg:mr-0"
+      className="sm:space-y-8 space-y-4 sm:w-full w-[87%] rounded-md border-[1px] border-richblack-700 bg-richblack-800 sm:p-6 p-3 mr-8 sm:ml-0 ml-[5px]"
     >
       <div className="flex flex-col space-y-2">
-        <label htmlFor="courseTitle" className="text-sm text-richblack-5">
+        <label htmlFor="courseTitle" className="sm:text-sm text-xs text-richblack-5">
           Course Title <sup className="text-pink-200">*</sup>
         </label>
         <input
           id="courseTitle"
           placeholder="Enter Course Name"
           {...register("courseTitle", { required: true })}
-          className="form-style w-full p-2 text-black"
+          className="form-style w-full sm:p-2 p-1 sm:text-normal text-xs text-black"
         />
         {errors.courseTitle && (
           <span className="ml-2 text-xs tracking-wide text-pink-200">
@@ -162,14 +162,14 @@ const CourseInformationForm = () => {
         )}
       </div>
       <div className="flex flex-col space-y-2">
-        <label className="text-sm text-richblack-5" htmlFor="courseShortDesc">
+        <label className="sm:text-sm text-xs text-richblack-5" htmlFor="courseShortDesc">
           Course Short Description<sup>*</sup>
         </label>
         <textarea
           id="courseShortDesc"
           placeholder="Enter Description"
           {...register("courseShortDesc", { required: true })}
-          className="form-style resize-x-none min-h-[130px] w-full p-1 text-black"
+          className="form-style resize-x-none min-h-[130px] sm:text-normal text-xs w-full p-1 text-black"
         />
         {errors.courseShortDesc && (
           <span>Course Description is required**</span>
@@ -177,35 +177,35 @@ const CourseInformationForm = () => {
       </div>
 
       <div className="relative">
-        <label className="text-sm text-richblack-5" htmlFor="coursePrice">
+        <label className="sm:text-sm text-xs text-richblack-5" htmlFor="coursePrice">
           Course Price<sup>*</sup>
         </label>
         <input
           id="coursePrice"
           type="number"
           placeholder="Enter Course Price"
-          className="form-style w-full !pl-12 p-1 text-black"
+          className="form-style w-full sm:p-2 p-1 sm:pl-12 pl-8 sm:text-normal text-xs text-black"
           {...register("coursePrice", {
             required: true,
             valueAsNumber: true,
           })}
         />
-        <HiOutlineCurrencyRupee className="absolute left-3 top-[39px] inline-block -translate-y-1/2 text-2xl text-richblack-400" />
+        <HiOutlineCurrencyRupee className="absolute sm:left-3 sm:top-[39px] left-1 top-[36px] inline-block -translate-y-1/2 text-2xl text-richblack-400" />
         {errors.coursePrice && (
-          <span className="ml-2 text-xs tracking-wide text-pink-200">
+          <span className="ml-2 sm:text-xs text-[8px] tracking-wide text-pink-200">
             Course Price is Required**
           </span>
         )}
       </div>
       <div className="flex flex-col space-y-2">
-        <label className="text-sm text-richblack-5" htmlFor="courseCategory">
+        <label className="sm:text-sm text-xs text-richblack-5" htmlFor="courseCategory">
           Course Category <sup className="text-pink-200">*</sup>
         </label>
         <select
           id="courseCategory"
           defaultValue=""
           {...register("courseCategory", { required: true })}
-          className="form-style w-full p-2 text-black"
+          className="form-style w-full sm:p-2 p-1 text-black sm:text-normal text-xs"
         >
           <option value="" disabled>
             Choose a Category
@@ -215,7 +215,7 @@ const CourseInformationForm = () => {
               <option key={category._id}>{category.name}</option>
             ))}
         </select>
-        {errors.courseCategories && <span className="ml-2 text-xs tracking-wide text-pink-200">Course Category is required</span>}
+        {errors.courseCategories && <span className="ml-2 sm:text-xs text-[8px] tracking-wide text-pink-200">Course Category is required</span>}
       </div>
       <ChipInput
             label="Tags"
@@ -236,23 +236,23 @@ const CourseInformationForm = () => {
       />
 
       <div className="flex flex-col space-y-2">
-        <label className="text-sm text-richblack-5">
+        <label className="sm:text-sm text-xs text-richblack-5">
           Benefits of the course<sup className="text-pink-200">*</sup>
         </label>
         <textarea
           id="coursebenefits"
           placeholder="Enter Benefits of the course"
           {...register("courseBenefits", { required: true })}
-          className="form-style resize-x-none min-h-[130px] w-full text-black p-2"
+          className="form-style resize-x-none sm:text-normal text-xs min-h-[130px] w-full text-black p-2"
         />
         {errors.courseBenefits && (
-          <span className="ml-2 text-xs tracking-wide text-pink-200">Benefits of the course are required</span>
+          <span className="ml-2 sm:text-xs text-[8px] tracking-wide text-pink-200">Benefits of the course are required</span>
         )}
       </div>
 
       <RequirementFields
         name="courseRequirements"
-        label="Requirements/Instructions"
+        label="Requirements"
         setValue={setValue}
         getValues={getValues}
         register={register}
@@ -262,7 +262,7 @@ const CourseInformationForm = () => {
         {editCourse && (
           <button
             onClick={() => dispatch(setStep(2))}
-            className="flex items-center gap-x-2 bg-richblack-300 p-2 rounded-md mb-3"
+            className="flex items-center gap-x-2 bg-richblack-300 sm:text-normal text-xs sm:p-2 p-1 rounded-md mb-3"
           >
             Continue Without Saving
           </button>

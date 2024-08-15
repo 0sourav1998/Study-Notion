@@ -20,7 +20,7 @@ const Sidebar = () => {
     return <div>Loading...</div>;
   }
   return <div>
-    <div className="flex h-[calc(100vh-3.5rem)] lg:min-w-[220px] min-w-[140px]  flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800 py-10">
+    <div className="flex h-[calc(100vh-3.5rem)] lg:min-w-[220px] w-[120px]  flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800 py-10">
         <div className="flex flex-col">
             {
                 sidebarLinks.map((link)=>{
@@ -43,10 +43,10 @@ const Sidebar = () => {
                 btn1Handle :() =>dispatch(logout(navigate)) ,
                 btn2Handle :() =>setConfirmationModal(null) ,
             })}
-            className="px-8 py-2 text-sm font-medium text-richblack-300"
+            className="lg:px-8 px-4 py-2 text-sm font-medium text-richblack-300"
             >
 
-                <div className="flex items-center gap-x-2">
+                <div className="flex items-center -ml-2 sm:-ml-0 gap-x-1">
                     <VscSignOut className="text-lg"/>
                     <span>Logout</span>
                 </div>

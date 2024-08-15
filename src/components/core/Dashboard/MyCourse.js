@@ -25,7 +25,8 @@ export default function MyCourse() {
       }
     }
     fetchCourses()
-  }, [])
+  }, []) ;
+  
 
   const deleteAll =async()=>{
     const response = await deleteAllCourses(token) ;
@@ -37,9 +38,9 @@ export default function MyCourse() {
     <div>
       <div className="lg:mb-14 mb-6 flex lg:flex-row flex-col items-center justify-between gap-4">
         <h1 className="lg:text-3xl text-2xl lg:mb-4 mb-1 font-medium text-richblack-5">My Courses</h1>
-        <div className="-mt-4 lg:-mt-0">
+        <div className="-mt-4 lg:-mt-0 ml-6">
         {
-          courses.length > 0 && <button className="bg-pink-700 rounded-md lg:p-2 p-1 text-white px-4 hover:scale-90 transition-all duration-200 mr-4" onClick={()=>setConfirmationModal({
+          courses.length > 0 && <button className="bg-pink-700 mb-4 sm:mb-0 rounded-md lg:p-2 p-1 text-white px-4 hover:scale-90 transition-all duration-200 mr-4" onClick={()=>setConfirmationModal({
             text1 : "Delete All Courses" ,
             text2 : "Courses , Sections and Lectures will be deleted" ,
             btn1Text : "Delete All" ,
@@ -58,7 +59,7 @@ export default function MyCourse() {
         </div>
         
       </div>
-      {courses?.length > 0 ? <CoursesTable courses={courses} setCourses={setCourses} /> : <div className="text-white text-3xl flex justify-center items-center"><p>No Courses Found</p></div>}
+      {courses?.length > 0 ? <CoursesTable courses={courses} setCourses={setCourses} /> : <div className="text-white sm:text-3xl text-lg flex justify-center items-center"><p>No Courses Found</p></div>}
       {
         confirmationModal && <ConfirmationModal modalData={confirmationModal} />
       }

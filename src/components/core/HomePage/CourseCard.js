@@ -7,7 +7,7 @@ import { ImTree } from "react-icons/im";
 const CourseCard = ({cardData, currentCard, setCurrentCard}) => {
   return (
     <div
-      className={`w-[360px] lg:w-[30%] ${
+      className={`w-[200px] sm:mr-0 mr-3 lg:w-[30%] ${
         currentCard === cardData?.heading
           ? "bg-white shadow-[12px_12px_0_0] shadow-yellow-50"
           : "bg-richblack-800"
@@ -18,12 +18,12 @@ const CourseCard = ({cardData, currentCard, setCurrentCard}) => {
         <div
           className={` ${
             currentCard === cardData?.heading && "text-richblack-800"
-          } font-semibold text-[20px]`}
+          } font-semibold sm:text-[20px] text-[14px]`}
         >
           {cardData?.heading}
         </div>
 
-        <div className="text-richblack-400">{cardData?.description}</div>
+        <div className="text-richblack-400 sm:text-[16px] text-[14px]">{cardData?.description}</div>
       </div>
 
       <div
@@ -31,11 +31,11 @@ const CourseCard = ({cardData, currentCard, setCurrentCard}) => {
           currentCard === cardData?.heading ? "text-blue-300" : "text-richblack-300"
         } px-6 py-3 font-medium`}
       >
-        <div className="flex items-center gap-2 text-[16px]">
+        <div className="flex items-center gap-2 sm:text-[16px] text-[12px]">
           <HiUsers />
           <p>{cardData?.level}</p>
         </div>
-        <div className="flex items-center gap-2 text-[16px]">
+        <div className="flex items-center gap-2 sm:text-[16px] text-[12px]">
           <ImTree />
           <p>{cardData?.lessionNumber} Lession</p>
         </div>

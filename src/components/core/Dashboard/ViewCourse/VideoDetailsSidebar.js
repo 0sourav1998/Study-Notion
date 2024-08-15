@@ -56,8 +56,8 @@ const VideoDetailsSidebar = ({ setReviewModal }) => {
 
   return (
     <>
-      <div className="flex h-[calc(100vh-3.5rem)] lg:w-[320px] w-[200px] max-w-[350px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800">
-        <div className="mx-5 flex flex-col items-start justify-between gap-2 gap-y-4 border-b border-richblack-600 py-5 text-lg font-bold text-richblack-25">
+      <div className="flex h-[calc(100vh-3.5rem)] lg:w-[320px] w-[120px] max-w-[350px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800">
+        <div className="mx-5 flex flex-col items-start justify-between gap-2 gap-y-4 border-b border-richblack-600 py-5 sm:text-lg text-sm font-bold text-richblack-25">
           <div className="flex lg:flex-row flex-col gap-y-4 w-full items-center justify-between ">
             <button onClick={() => navigate("/dashboard/enrolled-courses")}>
               Back
@@ -67,8 +67,8 @@ const VideoDetailsSidebar = ({ setReviewModal }) => {
             </button>
           </div>
           <div className="flex flex-col">
-            <p>{courseEntireData?.courseName}</p>
-            <p className="text-sm font-semibold text-richblack-500">
+            <p className="sm:text-2xl text-[10px] mb-2">{courseEntireData?.courseName}</p>
+            <p className="sm:text-lg text-[10px] font-semibold text-richblack-500">
                 Total Content : {totalNoOfLectures} Video(s)
             </p>
           </div>
@@ -82,7 +82,7 @@ const VideoDetailsSidebar = ({ setReviewModal }) => {
             >
               <div className="flex flex-row justify-between bg-richblack-600 px-5 py-4">
                 <div className="w-[70%] font-semibold">
-                  <p>{section?.sectionName}</p>
+                  <p className="sm:text-xs text-[9px]">{section?.sectionName}</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <span
@@ -117,7 +117,7 @@ const VideoDetailsSidebar = ({ setReviewModal }) => {
                         type="checkbox"
                         checked={completedVideo.includes(topic._id)}
                       />
-                      <span>{topic?.title}</span>
+                      <span className="sm:text-xs text-[9px]">{topic?.title}</span>
                     </div>
                   ))}
               </div>

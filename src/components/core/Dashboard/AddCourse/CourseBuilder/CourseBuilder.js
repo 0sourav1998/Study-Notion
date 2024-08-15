@@ -71,14 +71,14 @@ const CourseBuilder = () => {
     setValue("sectionName", "");
   };
   return (
-    <div className="-mt-16">
+    <div className="sm:-mt-16 -mt-8 sm:ml-0 ml-[6px] overflow-y-hidden">
       <form className="text-white " onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col">
           <label htmlFor="sectionName" className="mb-4">Section Name</label>
           <input
             id="sectionName"
             placeholder="Create Section"
-            className="lg:w-full text-black mb-6 p-2 w-[80%]"
+            className="lg:w-full text-black mb-6 sm:p-2 p-1 sm:w-[90%] w-[70%]"
             {...register("sectionName", { required: true })}
           />
         </div>
@@ -96,11 +96,11 @@ const CourseBuilder = () => {
         </div>
       </form>
       <div>{course?.courseContent?.length > 0 && <NestedView />}</div>
-      <div className="flex gap-6 mt-6">
+      <div className="flex sm:gap-6 gap-2 mt-6">
         <button type="button" onClick={goBack} className="flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900">
           Back
         </button>
-        <button type="button" onClick={goToNext} className="text-black font-bold rounded-md p-2 bg-yellow-50">
+        <button type="button" onClick={goToNext} className="text-black  font-bold rounded-md p-2 bg-yellow-50">
           Next
         </button>
       </div>

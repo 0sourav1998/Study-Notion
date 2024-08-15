@@ -31,13 +31,13 @@ const RequirementFields = ({
   return (
     <div className="flex flex-col space-y-2">
       <div>
-        <label className="text-sm text-richblack-5">{label}</label>
+        <label className="sm:text-sm text-xs text-richblack-5">{label}</label>
         <div className="flex flex-col items-start space-y-2"></div>
         <input
           id={name}
           value={requirement}
           onChange={(e) => setRequirement(e.target.value)}
-          className="form-style w-full text-black p-2"
+          className="form-style w-full text-black sm:p-2 p-1"
         />
         <button
           onClick={addRequirements}

@@ -28,19 +28,19 @@ const ExploreMore = () => {
   return (
     <div>
       <div>
-        <div className="text-4xl font-semibold text-center my-10">
+        <div className="sm:text-4xl text-xl sm:font-semibold font-medium text-center my-10 mr-3">
           Unlock the
           <HighlightText text={"Power of Code"} />
-          <p className="text-center text-richblack-300 text-lg font-semibold mt-1">
+          <p className="text-center text-richblack-300 sm:text-lg text-[13px] sm:font-semibold font-medium mt-1">
             Learn to Build Anything You Can Imagine
           </p>
         </div>
       </div>
-      <div className="flex lg:flex-row flex-col lg:gap-5 -mt-5 mx-auto w-11/12 lg:w-full bg-richblack-50 lg:bg-richblack-800 lg:text-richblack-200 text-richblack-900 p-1 lg:rounded-full mb-8 lg:mb-0 font-medium drop-shadow-[0_1.5px_rgba(255,255,255,0.25)]">
+      <div className="flex lg:flex-row flex-col lg:gap-5 -mt-5 mx-auto w-6/12 lg:w-full  bg-richblack-50 lg:bg-richblack-800 lg:text-richblack-200 text-richblack-900 p-1 lg:rounded-full mb-8 lg:mb-0 font-medium drop-shadow-[0_1.5px_rgba(255,255,255,0.25)]">
         {tabsName.map((ele, index) => {
           return (
             <div
-              className={` text-[16px] flex flex-row items-center gap-2 ${
+              className={`sm:text-[16px] text-12px flex flex-row items-center gap-2 ${
                 currentTab === ele
                   ? "bg-richblack-900 text-richblack-5 font-medium"
                   : "lg:text-richblack-200 text-richblack-700"

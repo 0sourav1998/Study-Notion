@@ -4,9 +4,9 @@ import RenderStep from "./RenderStep";
 const AddCourse = () => {
   return (
     <>
-      <div className="flex w-full items-start gap-x-6">
+      <div className="flex sm:w-full items-start sm:gap-x-6 gap-x-0 overflow-x-hidden">
         <div className="flex flex-1 flex-col">
-          <h1 className="mb-6 text-3xl font-medium text-richblack-5">
+          <h1 className="mb-6 sm:text-3xl sm:font-medium text-lg font-normal ml-3 text-richblack-5">
             Add course
           </h1>
           <div className="flex-1">

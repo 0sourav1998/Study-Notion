@@ -38,11 +38,11 @@ const InstructorChart = ({courses}) => {
       
     return (
         <div className="flex flex-1 flex-col gap-y-4 rounded-md bg-richblack-800 p-6">
-          <p className="text-lg font-bold text-richblack-5">Visualize</p>
+          <p className="sm:text-lg sm:font-bold text-sm font-medium text-richblack-5">Visualize</p>
           <div className="space-x-4 font-semibold">
             <button
               onClick={() => setCurrChart("students")}
-              className={`rounded-sm p-1 px-3 transition-all duration-200 ${
+              className={`rounded-sm p-1 sm:px-3 px-2 transition-all duration-200 ${
                 currChart === "students"
                   ? "bg-richblack-700 text-yellow-50"
                   : "text-yellow-400"
@@ -52,7 +52,7 @@ const InstructorChart = ({courses}) => {
             </button>
             <button
               onClick={() => setCurrChart("income")}
-              className={`rounded-sm p-1 px-3 transition-all duration-200 ${
+              className={`rounded-sm p-1 sm:px-3 px-1 transition-all duration-200 ${
                 currChart === "income"
                   ? "bg-richblack-700 text-yellow-50"
                   : "text-yellow-400"
@@ -61,7 +61,7 @@ const InstructorChart = ({courses}) => {
               Income
             </button>
           </div>
-          <div className="relative mx-auto aspect-square h-full w-full">
+          <div className="relative mx-auto aspect-square h-full w-full sm:ml-0 ml-1">
             <Pie
               data={currChart === "students" ? studentsChartData : amountChartData}
               options={options}

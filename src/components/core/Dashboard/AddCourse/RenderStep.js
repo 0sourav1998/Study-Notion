@@ -28,7 +28,7 @@ const RenderStep = () => {
         {steps.map((item) => (
           <div className="flex flex-row lg:flex-col items-center " key={item.id}>
             <button
-              className={`grid cursor-default aspect-square w-[34px] ml-12 place-items-center rounded-full border-[1px] ${
+              className={`grid cursor-default aspect-square sm:w-[34px] w-[20px] sm:ml-12 ml-2 place-items-center rounded-full border-[1px] ${
                 step === item.id
                   ? "border-yellow-50 bg-yellow-900 text-yellow-50"
                   : "border-richblack-700 bg-richblack-800 text-black"
@@ -43,14 +43,14 @@ const RenderStep = () => {
           </div>
         ))}
       </div>
-      <div className="relative mb-16 -mt-[122px] lg:mt-0 flex lg:flex-row flex-col w-full select-none justify-between">
+      <div className="relative sm:mb-16 mb-8 sm:-mt-[122px] -mt-[100px] lg:mt-0 flex lg:flex-row flex-col w-full select-none justify-between">
         {steps.map((item,index) => (
           <div key={index}>
             <div className="flex min-w-[130px] flex-col items-center"
               key={item.id}>
-              <p className={`text-sm ${
+              <p className={`sm:text-sm text-[10px] sm:ml-0 ml-2 ${
                   step >= item.id ? "text-richblack-5" : "text-richblack-500"
-                } mb-6`}>{item.title}</p>
+                } sm:mb-6 mb-5`}>{item.title}</p>
             </div>
           </div>
         ))}

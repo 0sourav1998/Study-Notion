@@ -60,8 +60,8 @@ export default function PublishCourse() {
   }
 
   return (
-    <div className="rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-6 lg:mr-0 mr-6">
-      <p className="text-2xl font-semibold text-richblack-5">
+    <div className="rounded-md ml-[6px]  border-[1px] border-richblack-700 bg-richblack-800 sm:p-6 p-2 sm:w-full w-[90%] lg:mr-0 mr-6">
+      <p className="sm:text-2xl text-sm font-semibold text-richblack-5">
         Publish Settings
       </p>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -71,24 +71,24 @@ export default function PublishCourse() {
               type="checkbox"
               id="public"
               {...register("public")}
-              className="border-gray-300 h-4 w-4 rounded bg-richblack-500 text-richblack-400 focus:ring-2 focus:ring-richblack-5"
+              className="border-gray-300 sm:h-4 sm:w-4 h-2 w-2 rounded bg-richblack-500 text-richblack-400 focus:ring-2 focus:ring-richblack-5"
             />
-            <span className="ml-2 text-richblack-400">
+            <span className="ml-2 sm:text-normal text-[10px] text-richblack-400">
               Make this course as public
             </span>
           </label>
         </div>
 
-        <div className="ml-auto flex max-w-max items-center gap-x-4">
+        <div className="ml-auto flex max-w-max items-center sm:gap-x-4 gap-1">
           <button
             disabled={loading}
             type="button"
             onClick={goBack}
-            className="flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900"
+            className="flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 sm:py-[8px] sm:px-[20px] py-[4px] px-[14px] font-semibold text-richblack-900"
           >
             Back
           </button>
-          <IconBtn disabled={loading} text="Save Changes" />
+          <IconBtn disabled={loading} text="Save" />
         </div>
       </form>
     </div>

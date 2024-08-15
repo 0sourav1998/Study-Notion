@@ -53,7 +53,7 @@ export default function ChipInput({
         {Array.isArray(chips) && chips.map((chip, index) => (
           <div
             key={index}
-            className="m-1 flex items-center rounded-full bg-yellow-400 px-2 py-1 text-sm text-richblack-5"
+            className="m-1 flex items-center rounded-full bg-yellow-400 px-2 py-1 sm:text-sm text-xs text-richblack-5"
           >
             {chip}
             <button
@@ -71,7 +71,7 @@ export default function ChipInput({
           type="text"
           placeholder={placeholder}
           onKeyDown={handleKeyDown}
-          className="form-style w-full text-black  p-2"
+           className="form-style w-full sm:p-2 p-1 sm:text-normal text-xs text-black"
         />
       </div>
       {errors[name] && (

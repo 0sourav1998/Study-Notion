@@ -29,13 +29,13 @@ export default function EditProfile() {
   return (
     <>
       <form onSubmit={handleSubmit(submitProfileForm)}>
-        <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12 text-richblack-25 font-semibold">
-          <h2 className="text-lg font-semibold text-richblack-5">
+        <div className="sm:my-10 my-4 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 sm:px-12 px-2 text-richblack-25 font-semibold">
+          <h2 className="sm:text-lg sm:font-semibold text-xs font-normal text-richblack-5">
             Profile Information
           </h2>
-          <div className="flex flex-col gap-5 lg:flex-row">
+          <div className="flex flex-col sm:gap-5 gap-2  lg:flex-row">
             <div className="flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="firstName" className="lable-style">
+              <label htmlFor="firstName" className="lable-style sm:text-xl text-[10px]">
                 First Name
               </label>
               <input
@@ -43,7 +43,7 @@ export default function EditProfile() {
                 name="firstName"
                 id="firstName"
                 placeholder="Enter first name"
-                className="form-style p-2 bg-richblack-200 rounded-md"
+                className="form-style sm:p-2 p-1 sm:text-xl text-[12px] bg-richblack-200 rounded-md"
                 {...register("firstName", { required: true })}
                 defaultValue={user?.firstName}
               />
@@ -54,7 +54,7 @@ export default function EditProfile() {
               )}
             </div>
             <div className="flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="lastName" className="lable-style">
+              <label htmlFor="lastName" className="lable-style sm:text-xl text-[10px]">
                 Last Name
               </label>
               <input
@@ -62,7 +62,7 @@ export default function EditProfile() {
                 name="lastName"
                 id="lastName"
                 placeholder="Enter first name"
-                className="form-style p-2 bg-richblack-200 rounded-md"
+                className="form-style sm:p-2 p-1 sm:text-xl text-[12px] bg-richblack-200 rounded-md"
                 {...register("lastName", { required: true })}
                 defaultValue={user?.lastName}
               />
@@ -76,14 +76,14 @@ export default function EditProfile() {
 
           <div className="flex flex-col gap-5 lg:flex-row">
             <div className="flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="dateOfBirth" className="lable-style">
+              <label htmlFor="dateOfBirth" className="lable-style sm:text-xl text-[10px]">
                 Date of Birth
               </label>
               <input
                 type="date"
                 name="dateOfBirth"
                 id="dateOfBirth"
-                className="form-style p-2 bg-richblack-200 rounded-md"
+                className="form-style sm:p-2 p-1 sm:text-xl text-[12px] bg-richblack-200 rounded-md"
                 {...register("dateOfBirth", {
                   required: {
                     value: true,
@@ -103,14 +103,14 @@ export default function EditProfile() {
               )}
             </div>
             <div className="flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="gender" className="lable-style">
+              <label htmlFor="gender" className="lable-style sm:text-xl text-[10px]">
                 Gender
               </label>
               <select
                 type="text"
                 name="gender"
                 id="gender"
-                className="form-style p-2 bg-richblack-200 rounded-md"
+                className="form-style sm:p-2 p-1 sm:text-xl text-[12px] bg-richblack-200 rounded-md"
                 {...register("gender", { required: true })}
                 defaultValue={user?.additionalDetails?.gender}
               >
@@ -132,7 +132,7 @@ export default function EditProfile() {
 
           <div className="flex flex-col gap-5 lg:flex-row">
             <div className="flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="contactNumber" className="lable-style">
+              <label htmlFor="contactNumber" className="lable-style sm:text-xl text-[10px]">
                 Contact Number
               </label>
               <input
@@ -140,7 +140,7 @@ export default function EditProfile() {
                 name="contactNumber"
                 id="contactNumber"
                 placeholder="Enter Contact Number"
-                className="form-style p-2 bg-richblack-200 rounded-md"
+                className="form-style sm:p-2 p-1 sm:text-xl text-[12px] bg-richblack-200 rounded-md"
                 {...register("contactNumber", {
                   required: {
                     value: true,
@@ -158,7 +158,7 @@ export default function EditProfile() {
               )}
             </div>
             <div className="flex flex-col gap-2 lg:w-[48%]">
-              <label htmlFor="about" className="lable-style">
+              <label htmlFor="about" className="lable-style sm:text-xl text-[10px]">
                 About
               </label>
               <input
@@ -166,7 +166,7 @@ export default function EditProfile() {
                 name="about"
                 id="about"
                 placeholder="Enter Bio Details"
-                className="form-style p-2 bg-richblack-200 rounded-md"
+                className="form-style sm:p-2 p-1 sm:text-xl text-[12px] bg-richblack-200 rounded-md"
                 {...register("about", { required: true })}
                 defaultValue={user?.additionalDetails?.about}
               />
@@ -179,7 +179,7 @@ export default function EditProfile() {
           </div>
         </div>
 
-        <div className="flex lg:flex-row flex-col w-fit justify-center lg:justify-end gap-2">
+        <div className="flex lg:flex-row flex-col w-fit justify-center lg:justify-end gap-2 sm:ml-0 ml-3">
           <button
             onClick={() => {
               navigate("/dashboard/my-profile")

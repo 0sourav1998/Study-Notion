@@ -139,10 +139,10 @@ const SubSectionModal = ({
               id="lectureTitle"
               placeholder="Enter Lecture Title"
               {...register("lectureTitle", { required: true })}
-              className="form-style w-full p-2"
+              className="form-style w-full p-2 sm:text-normal text-sm"
             />
             {errors.lectureTitle && (
-              <span className="ml-2 text-xs tracking-wide text-pink-200">
+              <span className="ml-2 sm:text-xs text-[8px] tracking-wide text-pink-200">
                 Lecture title is required
               </span>
             )}
@@ -156,10 +156,10 @@ const SubSectionModal = ({
               id="lectureDesc"
               placeholder="Enter Lecture Description"
               {...register("lectureDesc", { required: true })}
-              className="form-style resize-x-none min-h-[130px] w-full"
+              className="form-style resize-x-none min-h-[130px] sm:text-normal text-sm w-full"
             />
             {errors.lectureDesc && (
-              <span className="ml-2 text-xs tracking-wide text-pink-200">
+              <span className="ml-2 sm:text-xs text-[8px] tracking-wide text-pink-200">
                 Lecture Description is required
               </span>
             )}

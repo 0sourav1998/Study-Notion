@@ -48,14 +48,14 @@ const NestedView = ({ handleChangeEditSectionName }) => {
   return (
     <>
       <div
-        className="rounded-lg bg-richblack-700 p-6 px-8 lg:mr-0 mr-6 lg:w-full w-[90%]"
+        className="rounded-lg bg-richblack-700 sm:p-6 p-2 sm:px-8 px-4 lg:mr-0 mr-6 sm:w-full w-[80%]"
         id="nestedViewContainer"
       >
         {course?.courseContent.map((section, index) => (
           <details key={index} className="text-white">
             <summary className="flex cursor-pointer items-center justify-between border-b-2 border-b-richblack-600 py-2">
               <div className="flex items-center gap-x-3">
-                <RxDropdownMenu className="text-2xl text-richblack-50" />
+                <RxDropdownMenu className="sm:text-2xl text-lg text-richblack-50" />
                 <p className="lg:font-semibold font-semibol text-xs text-richblack-50">
                   {section.sectionName}
                 </p>
@@ -73,20 +73,20 @@ const NestedView = ({ handleChangeEditSectionName }) => {
                     });
                   }}
                 >
-                  <RiDeleteBin6Line className="text-xl text-richblack-300" />
+                  <RiDeleteBin6Line className="sm:text-xl text-lg text-richblack-300" />
                 </button>
                 <span className="font-medium text-richblack-300">|</span>
-                <AiFillCaretDown className={`text-xl text-richblack-300`} />
+                <AiFillCaretDown className={`sm:text-xl text-lg text-richblack-300`} />
               </div>
             </summary>
-            <div className="mx-6 pb-2">
+            <div className="sm:mx-6 mx-3 pb-2">
               {section?.subSection.map((data) => (
                 <div
                   onClick={() => setViewSubSection(data)}
                   className="flex cursor-pointer items-center justify-between gap-x-3 border-b-2 border-b-richblack-600 py-2"
                 >
                   <div className="flex items-center gap-x-3 py-2 ">
-                    <RxDropdownMenu className="text-2xl text-richblack-50" />
+                    <RxDropdownMenu className="sm:text-2xl text-lg text-richblack-50" />
                     <p className="font-semibold text-xs text-richblack-50">
                       {data.title}
                     </p>
@@ -97,7 +97,7 @@ const NestedView = ({ handleChangeEditSectionName }) => {
                         setEditSubSection({ ...data, sectionId: section._id })
                       }
                     >
-                      <MdEdit className="text-xl text-richblack-300" />
+                      <MdEdit className="sm:text-xl text-sm text-richblack-300" />
                     </button>
                     <button
                       onClick={() =>
@@ -121,8 +121,8 @@ const NestedView = ({ handleChangeEditSectionName }) => {
                 onClick={() => setAddSubsection(section._id)}
                 className="mt-3 flex items-center gap-x-1 text-yellow-50"
               >
-                <FaPlus className="text-lg" />
-                <p>Add Lecture</p>
+                <FaPlus className="sm:text-lg text-xs" />
+                <p className="sm:text-normal text-xs">Add Lecture</p>
               </button>
             </div>
           </details>

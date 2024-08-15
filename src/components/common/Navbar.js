@@ -54,10 +54,10 @@ function Navbar() {
     >
       <div className="flex lg:flex-row  w-11/12 max-w-maxContent items-center justify-between">
         <Link to="/">
-          <img src={logo} alt="Logo" width={160} height={32} loading="lazy" />
+          <img src={logo} alt="Logo" className="sm:w-[160px] sm:h-[32px] w-[85px]" loading="lazy" />
         </Link>
-        <nav className="hidden md:block">
-          <ul className="flex gap-x-6 text-richblack-25">
+        <nav className="md:block sm:mr-0 mr-4">
+          <ul className="flex sm:gap-x-6 gap-x-2 text-richblack-25 sm:text-normal text-xs">
             {NavbarLinks.map((link, index) => (
               <li key={index}>
                 {link.title === "Catalog" ? (
@@ -71,7 +71,7 @@ function Navbar() {
                     >
                       <p>{link.title}</p>
                       <BsChevronDown />
-                      <div className="invisible absolute left-[50%] top-[50%] z-[1000] flex w-[200px] translate-x-[-50%] translate-y-[3em] flex-col rounded-lg bg-richblack-5 p-4 text-richblack-900 opacity-0 transition-all duration-150 group-hover:visible group-hover:translate-y-[1.65em] group-hover:opacity-100 lg:w-[300px]">
+                      <div className="invisible absolute left-[50%] top-[50%] z-[1000] flex translate-x-[-50%] translate-y-[3em] flex-col rounded-lg bg-richblack-5 p-4 text-richblack-900 opacity-0 transition-all duration-150 group-hover:visible group-hover:translate-y-[1.65em] group-hover:opacity-100 sm:w-[300px] w-[180px]">
                         <div className="absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded bg-richblack-5"></div>
                         {loading ? (
                           <p className="text-center">Loading...</p>
@@ -155,9 +155,7 @@ function Navbar() {
             Logout
             </button>}
         </div>
-        <button className="mr-4 md:hidden sm:hidden">
-          <AiOutlineMenu fontSize={24} fill="#AFB2BF" />
-        </button>
+        
       </div>
       {
         confirmationModal && <ConfirmationModal modalData={confirmationModal}/>
