@@ -54,10 +54,10 @@ function Navbar() {
     >
       <div className="flex lg:flex-row  w-11/12 max-w-maxContent items-center justify-between">
         <Link to="/">
-          <img src={logo} alt="Logo" className="sm:w-[160px] sm:h-[32px] w-[85px]" loading="lazy" />
+          <img src={logo} alt="Logo" className="hidden sm:w-[160px] sm:h-[32px] w-[85px] sm:block" loading="lazy" />
         </Link>
         <nav className="md:block sm:mr-0 mr-4">
-          <ul className="flex sm:gap-x-6 gap-x-2 text-richblack-25 sm:text-normal text-xs">
+          <ul className="flex sm:gap-x-6 gap-x-3 text-richblack-25 sm:text-[18px] sm:mr-0 mr-4 text-[9px]">
             {NavbarLinks.map((link, index) => (
               <li key={index}>
                 {link.title === "Catalog" ? (
@@ -114,12 +114,12 @@ function Navbar() {
             ))}
           </ul>
         </nav>
-        <div className="hidden items-center gap-x-4 md:flex">
+        <div className="sm:gap-x-4 gap-x-2 sm:mr-0 mr-4 flex items-center ">
           {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
             <Link to="/dashboard/cart" className="relative">
-              <AiOutlineShoppingCart className="text-2xl text-richblack-100" />
+              <AiOutlineShoppingCart className="sm:text-2xl text-sm text-richblack-100" />
               {totalItems > 0 && (
-                <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center text-xs font-bold text-yellow-100">
+                <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full bg-richblack-600 text-center sm:text-xs text-[7px] font-bold text-yellow-100">
                   {totalItems}
                 </span>
               )}
@@ -127,24 +127,24 @@ function Navbar() {
           )}
           {token === null && (
             <Link to="/login">
-              <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
+              <button className="rounded-[8px] sm:text-lg text-[8px] border border-richblack-700 bg-richblack-800 sm:px-[12px] sm:py-[7px] px-[4px] py-[3px] text-richblack-100">
                 Log in
               </button>
             </Link>
           )}
           {token === null && (
             <Link to="/signup">
-              <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
+              <button className="rounded-[8px] sm:text-lg text-[8px] border border-richblack-700 bg-richblack-800 sm:px-[12px] sm:py-[8px] px-[4px] py-[3px] text-richblack-100">
                 Sign up
               </button>
             </Link>
           )}
           {token !== null && <Link to="/dashboard/my-profile">
-            <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100">
+            <button className="rounded-[8px] sm:text-lg text-[8px] border border-richblack-700 bg-richblack-800 sm:px-[12px] sm:py-[7px] px-[4px] py-[3px] text-richblack-100">
             Dashboard
             </button></Link>}
             {token !== null &&
-            <button className="rounded-[8px] border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100" onClick={()=>setConfirmationModal({
+            <button className="rounded-[8px] sm:text-lg text-[8px] border border-richblack-700 bg-richblack-800 sm:px-[12px] sm:py-[8px] px-[4px] py-[3px] text-richblack-100 sm:mt-0 mt-[2px]" onClick={()=>setConfirmationModal({
               text1 : "Logout" ,
               text2 : "Are You Sure , You Will be Logged Out ?" ,
               btn1Text : "Logout" ,
