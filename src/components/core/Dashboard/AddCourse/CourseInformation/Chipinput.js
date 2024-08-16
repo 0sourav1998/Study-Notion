@@ -27,7 +27,7 @@ export default function ChipInput({
   }, [chips])
 
   const handleKeyDown = (event) => {
-    if (event.key === "Enter" || event.key === "," || event.keyCode === 229) {
+    if (event.key === "Enter" || event.key === ",") {
       event.preventDefault()
       const chipValue = event.target.value.trim()
       if (chipValue && !chips.includes(chipValue)) {
