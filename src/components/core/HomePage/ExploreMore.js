@@ -36,11 +36,11 @@ const ExploreMore = () => {
           </p>
         </div>
       </div>
-      <div className="flex lg:flex-row flex-col lg:gap-5 -mt-5 mx-auto w-6/12 lg:w-full  bg-richblack-50 lg:bg-richblack-800 lg:text-richblack-200 text-richblack-900 p-1 lg:rounded-full mb-8 lg:mb-0 font-medium drop-shadow-[0_1.5px_rgba(255,255,255,0.25)]">
+      <div className="flex lg:flex-row flex-col lg:gap-5 -mt-5 mx-auto w-10/12 lg:w-full  bg-richblack-500 lg:bg-richblack-800 lg:text-richblack-200 text-richblack-900 p-1 lg:rounded-full mb-8 lg:mb-0 font-medium drop-shadow-[0_1.5px_rgba(255,255,255,0.25)]">
         {tabsName.map((ele, index) => {
           return (
             <div
-              className={`sm:text-[16px] text-12px flex flex-row items-center gap-2 ${
+              className={`sm:text-[16px] text-[10px] flex flex-row items-center gap-2 ${
                 currentTab === ele
                   ? "bg-richblack-900 text-richblack-5 font-medium"
                   : "lg:text-richblack-200 text-richblack-700"

@@ -4,8 +4,9 @@ const CourseProgress = require("../models/CourseProgress") ;
 const { convertSecondsToDuration } = require("../utils/secToDuration");
 const { default: mongoose } = require("mongoose");
 const Course = require("../models/Course");
+const { UploadImageToCloudinary } = require("../utils/UploadImageToCloudinary");
 
-// Method for updating a profile
+
 exports.updateProfile = async (req, res) => {
   try {
     const {
@@ -48,6 +49,41 @@ exports.updateProfile = async (req, res) => {
     });
   }
 };
+
+exports.uploadProfilePicture = async(req,res)=>{
+  try {
+    const {image} = req.files ;
+    if(!image){
+      return res.status(400).json({
+        success : false ,
+        message : "This Field is Required"
+      })
+    }
+    const id = req.user.id;
+    console.log(image,id)
+    const user = await User.findById(id);
+    console.log(user);
+    const cloudinaryResponse = await UploadImageToCloudinary(image,process.env.CLOUDINARY_FOLDER_NAME);
+    if(!cloudinaryResponse){
+      return res.status(404).json({
+        success: false ,
+        message : "Response Not Found"
+      })
+    }
+    user.image = cloudinaryResponse?.secure_url;
+    await user.save();
+    return res.status(200).json({
+      success : true ,
+      message : "Image Uploaded Successfully" ,
+      user
+    })
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+}
 
 exports.deleteAccount = async (req, res) => {
   try {

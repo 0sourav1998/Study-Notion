@@ -71,14 +71,14 @@ const CourseBuilder = () => {
     setValue("sectionName", "");
   };
   return (
-    <div className="sm:-mt-16 -mt-8 sm:ml-0 ml-[6px] overflow-y-hidden">
+    <div className="m-1">
       <form className="text-white " onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col">
           <label htmlFor="sectionName" className="mb-4">Section Name</label>
           <input
             id="sectionName"
             placeholder="Create Section"
-            className="lg:w-full text-black mb-6 sm:p-2 p-1 sm:w-[90%] w-[70%]"
+            className="lg:w-full text-black mb-6 sm:p-2 p-1 sm:w-[90%] w-full"
             {...register("sectionName", { required: true })}
           />
         </div>

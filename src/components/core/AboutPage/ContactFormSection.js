@@ -24,15 +24,15 @@ const ContactFormSection = () => {
 
 
   return (
-    <div className="flex flex-col  w-11/12 lg:mx-auto">
-      <p className="text-center text-3xl font-semibold mb-10">Get in Touch</p>
+    <div className="flex flex-col md:w-11/12 w-full lg:mx-auto">
+      <p className="text-center md:text-3xl text-lg font-semibold md:mb-10 mb-4">Get in Touch</p>
       <form
         onSubmit={handleSubmit(handleMessageSubmit)}
-        className="flex flex-col lg:w-1/2 w-[90%] lg:mx-auto relative lg:left-16 ml-4"
+        className="flex flex-col lg:w-1/2 w-[90%] lg:mx-auto relative lg:left-16 md:ml-4 ml-1"
       >
         <div className="flex lg:flex-row flex-col gap-x-2">
           <div className="flex flex-col">
-            <label htmlFor="firstName" className="mb-3 text-2xl font-semibold">
+            <label htmlFor="firstName" className="mb-3 md:text-2xl text-lg font-semibold">
               First Name
             </label>
             <input
@@ -47,7 +47,7 @@ const ContactFormSection = () => {
             {errors.firstName && <span>{errors.firstName.message}</span>}
           </div>
           <div className="flex flex-col">
-            <label htmlFor="lastName" className="mb-3 text-2xl font-semibold">
+            <label htmlFor="lastName" className="mb-3 md:text-2xl text-lg font-semibold">
               Last Name
             </label>
             <input
@@ -65,7 +65,7 @@ const ContactFormSection = () => {
         <div className="flex flex-col">
           <label
             htmlFor="emailAddress"
-            className="mb-3 mt-6 text-2xl font-semibold"
+            className="mb-3 mt-6 md:text-2xl text-lg font-semibold"
           >
             Email Address
           </label>
@@ -82,7 +82,7 @@ const ContactFormSection = () => {
         </div>
         <div className="flex-col mt-6">
             <div className="mb-3">
-                <lable htmlFor="phoneNo" className="text-2xl font-semibold">Phone Number</lable>
+                <lable htmlFor="phoneNo" className="md:text-2xl text-lg font-semibold">Phone Number</lable>
             </div>
             <div className="flex gap-4">
             <select
@@ -109,7 +109,7 @@ const ContactFormSection = () => {
         </div>
             </div>
         <div className="flex flex-col">
-          <label htmlFor="message" className="mb-3 mt-6 text-2xl font-semibold">
+          <label htmlFor="message" className="mb-3 mt-6 md:text-2xl text-lg font-semibold">
             Message
           </label>
           <textarea

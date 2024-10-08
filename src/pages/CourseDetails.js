@@ -102,27 +102,27 @@ const CourseDetails = () => {
   } = courseData.data[0];
 
   return (
-    <div className={`relative w-full bg-richblack-800`}>
+    <div className={`relative w-full min-h-screen bg-richblack-800`}>
       <div
-        className={`z-30 my-5 flex flex-col lg:flex-row justify-center gap-4 py-5 text-lg text-richblack-5`}
+        className={`z-30 md:my-5 my-2 flex flex-col md:flex-row justify-center gap-4 md:py-5 py-2 md:p-6 md:text-lg text-sm text-richblack-5`}
       >
-        <div className="lg:mr-[150px] mr-0 ml-10 lg:ml-0">
-          <p className="lg:text-4xl text-2xl w-full my-5 font-bold text-richblack-5">
+        <div className="lg:mr-[150px] mr-0 md:ml-10 lg:ml-0 ml-2">
+          <p className="lg:text-4xl text-lg w-full my-5 font-bold text-richblack-5">
             {courseName}
           </p>
-          <p className={`text-richblack-200 my-5`}>{courseDescription}</p>
-          <div className="text-md flex flex-wrap items-center gap-2">
-            <span className="text-yellow-25 my-5">{avgReviewCount || 0}</span>
+          <p className={`text-richblack-200 md:my-5 py-2`}>{courseDescription}</p>
+          <div className="text-sm md:text-lg flex flex-wrap items-center gap-2">
+            <span className="text-yellow-25 md:my-5 my-2">{avgReviewCount || 0}</span>
             <RatingStars Review_Count={avgReviewCount} Star_Size={24} className='my-5'/>
             <span className="my-5">{`(${ratingAndReviews?.length} reviews)`}</span>
             <span className="my-5">{studentEnrolled?.length || 0} Students Enrolled</span>
           </div>
 
-          <div className="mb-5">
+          <div className="mb-5 md:text-lg text-sm">
             <p>Created By {`${instructor.firstName}`}</p>
           </div>
 
-          <div className="flex flex-wrap gap-5 text-lg">
+          <div className="flex md:flex-wrap flex-col md:gap-5 gap-2 text-sm md:text-lg">
             <p className="flex items-center gap-2">
               Created At {formatDate(createdAt)}
             </p>
@@ -142,14 +142,14 @@ const CourseDetails = () => {
         </div>
       </div>
     <div className="mx-auto max-w-maxContentTab lg:mx-0 xl:max-w-[810px]"></div>
-      <div className="my-8 border border-richblack-600 p-8">
-        <p className="text-3xl font-semibold text-richblack-5"> What You WIll learn</p>
+      <div className="md:my-8 my-4 border border-richblack-600 md:p-8 p-4">
+        <p className="md:text-3xl text-lg font-semibold text-richblack-5"> What You WIll learn</p>
         <div className="text-richblack-5 mt-5 font-semibold">{whatYouWillLearn}</div>
       </div>
 
       <div className="mx-10">
         <div>
-          <p className="text-4xl font-bold">Course Content:</p>
+          <p className="md:text-4xl text-lg font-bold">Course Content:</p>
         </div>
 
         <div className="flex gap-x-3 justify-between">

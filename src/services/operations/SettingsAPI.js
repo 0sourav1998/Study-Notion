@@ -37,13 +37,12 @@ export function updateDisplayPicture(token, formData) {
   }
 }
 
-export function updateProfile(token, formData) {
+export function updateProfile(token, formData, navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
     try {
-      const response = await apiConnector("PUT", UPDATE_PROFILE_API, {
-        ...formData,
-        token: token,
+      const response = await apiConnector("PUT", UPDATE_PROFILE_API, formData , {
+        Authorization : `Bearer ${token}`
       })
       if (!response || !response.data) {
         throw new Error("Invalid response from server")
@@ -63,7 +62,7 @@ export function updateProfile(token, formData) {
         : `https://api.dicebear.com/5.x/initials/svg?seed=${updatedUserDetails.firstName} ${updatedUserDetails.lastName}`
 
       dispatch(setUser({ ...updatedUserDetails, image: userImage }))
-
+      navigate("/dashboard/my-profile")
       toast.success("Profile Updated Successfully")
     } catch (error) {
       toast.error("Could Not Update Profile")

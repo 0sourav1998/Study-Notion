@@ -21,7 +21,7 @@ export default function EditProfile() {
 
   const submitProfileForm = async (data) => {
     try {
-      dispatch(updateProfile(token, data))
+      dispatch(updateProfile(token, data , navigate));
     } catch (error) {
       console.error("ERROR MESSAGE - ", error.message)
     }

@@ -75,8 +75,8 @@ const Instructor = () => {
               </div>
             </div>
           </div>
-          <div className="rounded-md bg-richblack-800 sm:p-6 p-2 sm:mt-0 mt-[120px]">
-            <div className="flex sm:flex-row flex-col items-center justify-between">
+          <div className="rounded-md bg-richblack-800 sm:p-6 p-2 sm:mt-0 mt-[230px]">
+            <div className="flex flex-row items-center justify-between">
               <p className="sm:text-lg text-sm font-bold text-richblack-5">Your Courses</p>
               <Link to="/dashboard/my-courses">
                 <p className="sm:text-xs text-[8px] font-semibold text-yellow-50">View All</p>

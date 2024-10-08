@@ -48,7 +48,7 @@ const NestedView = ({ handleChangeEditSectionName }) => {
   return (
     <>
       <div
-        className="rounded-lg bg-richblack-700 sm:p-6 p-2 sm:px-8 px-4 lg:mr-0 mr-6 sm:w-full w-[80%]"
+        className="rounded-lg bg-richblack-700 sm:p-6 p-2 sm:px-8 px-4 lg:mr-0 mr-6 sm:w-full w-full"
         id="nestedViewContainer"
       >
         {course?.courseContent.map((section, index) => (

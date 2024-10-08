@@ -9,7 +9,7 @@ export const getAllCategory = async()=>{
     const response = await apiConnector("GET", categories.CATEGORIES_API) ;
     result = response.data.data ;
   }catch(error){
-    console.log("Error in fetching category")
+    console.log("Error in fetching category",error.message)
   }
   return result ;
 }

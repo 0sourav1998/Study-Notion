@@ -6,17 +6,18 @@ const {
   updateProfile,
   getAllUserDetails,
   getEnrolledCourses,
-  instructorStats
+  instructorStats,
+  uploadProfilePicture
 } = require("../controllers/Profile")
 
 // ********************************************************************************************************
 //                                      Profile routes
 // ********************************************************************************************************
-// Delet User Account
+
 router.delete("/deleteProfile", auth, deleteAccount)
 router.put("/updateProfile", auth , updateProfile)
+router.post("/updatePic", auth , uploadProfilePicture)
 router.get("/getUserDetails", auth, getAllUserDetails)
-// Get Enrolled Coursesu
 router.get("/getEnrolledCourses", auth, getEnrolledCourses)
 router.get("/instructor",auth,isInstructor,instructorStats)
 

@@ -38,7 +38,7 @@ export default function MyCourse() {
     <div>
       <div className="lg:mb-14 mb-6 flex lg:flex-row flex-col items-center justify-between gap-4">
         <h1 className="lg:text-3xl text-2xl lg:mb-4 mb-1 font-medium text-richblack-5">My Courses</h1>
-        <div className="-mt-4 lg:-mt-0 ml-6">
+        <div className="">
         {
           courses.length > 0 && <button className="bg-pink-700 mb-4 sm:mb-0 rounded-md lg:p-2 p-1 text-white px-4 hover:scale-90 transition-all duration-200 mr-4" onClick={()=>setConfirmationModal({
             text1 : "Delete All Courses" ,

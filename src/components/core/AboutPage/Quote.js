@@ -3,7 +3,7 @@ import HighlightText from '../HomePage/HighlightText'
 
 const Quote = () => {
   return (
-    <div>
+    <div className='md:text-xl text-sm'>
       We are passionate about revolutionizing the way we learn. Our innovative platform
       <HighlightText text={"combines technology"}/>
       <span className='text-brown-500'>

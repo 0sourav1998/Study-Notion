@@ -143,7 +143,7 @@ const CourseInformationForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="sm:space-y-8 space-y-4 sm:w-full w-[87%] rounded-md border-[1px] border-richblack-700 bg-richblack-800 sm:p-6 p-3 mr-8 sm:ml-0 ml-[5px]"
+      className="sm:space-y-8 space-y-4 sm:w-full w-full rounded-md border-[1px] border-richblack-700 bg-richblack-800 sm:p-6 p-3 mr-8 sm:ml-0"
     >
       <div className="flex flex-col space-y-2">
         <label htmlFor="courseTitle" className="sm:text-sm text-xs text-richblack-5">

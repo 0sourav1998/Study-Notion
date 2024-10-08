@@ -7,7 +7,6 @@ const userRoute = require("./routes/User") ;
 const paymentRoute = require("./routes/Payment") ;
 
 const {connectToMongo} = require("./config/database") ;
-const {UploadImageToCloudinary} = require("./utils/UploadImageToCloudinary") ;
 const cookieParser = require("cookie-parser") ;
 require("dotenv").config() ;
 const fileUpload = require("express-fileupload") ;
@@ -39,7 +38,7 @@ app.use("/profile",profileRoute) ;
 app.use("/payment" ,paymentRoute) ;
 app.use("/course",courseRoute) ;
 
-connectToMongo() ;
+connectToMongo();
 
 
 app.get("/", (req, res) => {

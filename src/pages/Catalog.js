@@ -42,7 +42,7 @@ const Catalog = () => {
   return (
     <div>
       <div className=" box-content bg-richblack-800 px-4">
-        <div className="mx-auto flex min-h-[260px] max-w-maxContentTab flex-col justify-center gap-4 lg:max-w-maxContent ">
+        <div className="mx-auto flex md:min-h-[260px] min-h-[190px] max-w-maxContentTab flex-col justify-center gap-4 lg:max-w-maxContent ">
           <p className="text-sm text-richblack-300">
             {`Home / Catalog / `}
             <span className="text-yellow-25">
@@ -58,8 +58,8 @@ const Catalog = () => {
         </div>
       </div>
       <div>
-        <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
-          <div className="text-white text-3xl">Courses to get Started</div>
+        <div className="mx-auto box-content w-full max-w-maxContentTab md:px-4 md:py-12 px-0 py-6 lg:max-w-maxContent">
+          <div className="text-white md:text-3xl text-lg">Courses to get Started</div>
           <div className="my-4 flex border-b border-b-richblack-600 text-sm">
           </div>
           <div>
@@ -67,10 +67,10 @@ const Catalog = () => {
           </div>
         </div>
         <div>
-          <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
-            <div className="text-white text-3xl">Frequently Bought</div>
+          <div className=" mx-auto box-content w-full max-w-maxContentTab md:px-4 md:py-12 px-0 py-6 lg:max-w-maxContent">
+            <div className="text-white md:text-3xl text-lg">Frequently Bought</div>
               <div className="py-8">
-                <div className="grid grid-cols-1 lg:grid-cols-3">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                   {
                     catalogPageData?.data?.mostSellingCourses?.slice(0,4).map((course,index)=>(
                       <CourseCard course={course} index={index} height={"h-[250px]"}/>

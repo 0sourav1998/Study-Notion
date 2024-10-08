@@ -50,16 +50,16 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
   return (
     <>
       <div
-        className={`flex flex-col gap-4 rounded-md bg-richblack-700 p-4 text-richblack-5`}
+        className={`flex flex-col mx-auto gap-4 md:w-fit w-[95%] md:mx-auto rounded-md bg-richblack-700 md:p-4 p-1.5 text-richblack-5`}
       >
         <img
           src={ThumbnailImage}
           alt={course?.courseName}
-          className="max-h-[300px] min-h-[180px] w-[400px] overflow-hidden rounded-2xl object-cover md:max-w-full"
+          className="max-h-[300px] min-h-[180px] w-fit overflow-hidden rounded-2xl object-cover md:max-w-full"
         />
 
         <div className="px-4">
-          <div className="space-x-3 pb-4 text-3xl font-semibold">
+          <div className="space-x-3 pb-4 md:text-3xl text-xl font-semibold">
             Rs. {CurrentPrice}
           </div>
           <div className="flex flex-row gap-4">
@@ -88,7 +88,7 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
           </div>
 
           <div className={``}>
-            <p className={`my-2 text-xl font-semibold `}>
+            <p className={`my-2 md:text-xl text-lg font-semibold `}>
               This Course Includes :
             </p>
             <div className="flex flex-col gap-3 text-sm text-caribbeangreen-100">

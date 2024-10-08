@@ -61,7 +61,7 @@ const InstructorChart = ({courses}) => {
               Income
             </button>
           </div>
-          <div className="relative mx-auto aspect-square h-full w-full sm:ml-0 ml-1">
+          <div className="relative mx-auto aspect-square h-[300px] w-full sm:ml-0 ml-1">
             <Pie
               data={currChart === "students" ? studentsChartData : amountChartData}
               options={options}

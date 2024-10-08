@@ -3,13 +3,14 @@ const jwt = require("jsonwebtoken");
 
 exports.auth = async (req, res, next) => {
   try {
+    console.log("Inside Auth")
         const token = req.cookies.token 
                         || req.body.token 
                         || req.header("Authorization").replace("Bearer ", "");
 
     if (!token) {
       return res.status(403).json({
-        succcess: false,
+        success: false,
         message: "Token is Invalid",
       });
     }

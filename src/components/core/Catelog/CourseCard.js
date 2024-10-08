@@ -18,10 +18,10 @@ const CourseCard = ({ course, height }) => {
             <img
               src={course?.thumbnail}
               alt=""
-              className={`${height} w-[350px] rounded-xl object-cover `}
+              className={`${height} w-fit rounded-xl object-fit `}
             />
           </div>
-          <div className="flex flex-col gap-2 px-1 py-3">
+          <div className="flex flex-col gap-2 px-3 py-3">
             <p className="text-xl text-richblack-5">{course?.courseName}</p>
             <p className="text-sm text-richblack-50">
               By : {course?.instructor?.firstName}{" "}
