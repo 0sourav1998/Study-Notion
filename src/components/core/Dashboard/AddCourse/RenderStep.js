@@ -25,7 +25,7 @@ const RenderStep = () => {
   return (
     <div className="flex flex-col justify-center">
       <div className="relative mb-2  flex lg:flex-row flex-col gap-2 w-[90%] justify-between">
-        {steps.map((item) => (
+        {steps?.map((item) => (
           <div className="flex flex-row lg:flex-col items-center " key={item.id}>
             <button
               className={`grid cursor-default aspect-square sm:w-[34px] w-[20px] sm:ml-12 ml-2 place-items-center rounded-full border-[1px] ${
@@ -44,7 +44,7 @@ const RenderStep = () => {
         ))}
       </div>
       <div className="relative sm:mb-16 mb-8 sm:-mt-[122px] -mt-[100px] lg:mt-0 flex lg:flex-row flex-col w-full select-none justify-between">
-        {steps.map((item,index) => (
+        {steps?.map((item,index) => (
           <div key={index}>
             <div className="flex min-w-[130px] flex-col items-center"
               key={item.id}>

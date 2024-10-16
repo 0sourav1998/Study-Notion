@@ -10,7 +10,7 @@ export default function RenderCartCourses() {
   const dispatch = useDispatch()
   return (
     <div className="flex flex-1 flex-col">
-      {cart.map((course, index) => (
+      {cart?.map((course, index) => (
         <div
           key={course._id}
           className={`flex w-full flex-wrap items-start justify-between gap-6 ${

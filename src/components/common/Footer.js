@@ -32,7 +32,7 @@ const Footer = () => {
                 Company
               </h1>
               <div className="flex flex-col gap-2">
-                {["About", "Careers", "Affiliates"].map((ele, i) => {
+                {["About", "Careers", "Affiliates"]?.map((ele, i) => {
                   return (
                     <div
                       key={i}
@@ -58,7 +58,7 @@ const Footer = () => {
               </h1>
 
               <div className="flex flex-col gap-2 mt-2">
-                {Resources.map((ele, index) => {
+                {Resources?.map((ele, index) => {
                   return (
                     <div
                       key={index}
@@ -86,7 +86,7 @@ const Footer = () => {
               </h1>
 
               <div className="flex flex-col gap-2 mt-2">
-                {Plans.map((ele, index) => {
+                {Plans?.map((ele, index) => {
                   return (
                     <div
                       key={index}
@@ -104,7 +104,7 @@ const Footer = () => {
               </h1>
 
               <div className="flex flex-col gap-2 mt-2">
-                {Community.map((ele, index) => {
+                {Community?.map((ele, index) => {
                   return (
                     <div
                       key={index}
@@ -121,14 +121,14 @@ const Footer = () => {
           </div>
 
           <div className="lg:w-[50%] flex flex-wrap flex-row justify-between pl-3 lg:pl-5 gap-3">
-            {FooterLink2.map((ele, i) => {
+            {FooterLink2?.map((ele, i) => {
               return (
                 <div key={i} className="w-[48%] lg:w-[30%] mb-7 lg:pl-0">
                   <h1 className="text-richblack-50 font-semibold text-[16px]">
                     {ele.title}
                   </h1>
                   <div className="flex flex-col gap-2 mt-2">
-                    {ele.links.map((link, index) => {
+                    {ele.links?.map((link, index) => {
                       return (
                         <div
                           key={index}
@@ -149,7 +149,7 @@ const Footer = () => {
       <div className="flex flex-row items-center justify-between w-11/12 max-w-maxContent text-richblack-400 mx-auto  pb-14 text-sm">
         <div className="flex justify-between lg:items-start items-center flex-col lg:flex-row gap-3 w-full">
           <div className="flex flex-row">
-            {BottomFooter.map((ele, i) => {
+            {BottomFooter?.map((ele, i) => {
               return (
                 <div
                   key={i}

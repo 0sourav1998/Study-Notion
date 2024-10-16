@@ -88,7 +88,7 @@ const ContactFormSection = () => {
             <select
             className="w-[15%] bg-richblack-300 text-richblack-5 rounded-md"
              {...register("countryCode",{required : {value : true , message : "This Value is required"}})}>
-            {countryCode.map((element, index) => (
+            {countryCode?.map((element, index) => (
               <option className="text-black" key={index} value={element.code}>
                 {element.code} - {element.country}
               </option>

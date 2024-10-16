@@ -37,7 +37,7 @@ const NestedView = ({ handleChangeEditSectionName }) => {
   const handleDeleleSubSection = async (sectionId, subSectionId) => {
     const result = await deleteSubSection({ subSectionId, sectionId, token });
     if (result) {
-      const updatedCourseContent = course.courseContent.map((section) =>
+      const updatedCourseContent = course.courseContent?.map((section) =>
         section._id === sectionId ? result : section
       );
       const updatedCourse = { ...course, courseContent: updatedCourseContent };
@@ -51,7 +51,7 @@ const NestedView = ({ handleChangeEditSectionName }) => {
         className="rounded-lg bg-richblack-700 sm:p-6 p-2 sm:px-8 px-4 lg:mr-0 mr-6 sm:w-full w-full"
         id="nestedViewContainer"
       >
-        {course?.courseContent.map((section, index) => (
+        {course?.courseContent?.map((section, index) => (
           <details key={index} className="text-white">
             <summary className="flex cursor-pointer items-center justify-between border-b-2 border-b-richblack-600 py-2">
               <div className="flex items-center gap-x-3">
@@ -80,7 +80,7 @@ const NestedView = ({ handleChangeEditSectionName }) => {
               </div>
             </summary>
             <div className="sm:mx-6 mx-3 pb-2">
-              {section?.subSection.map((data) => (
+              {section?.subSection?.map((data) => (
                 <div
                   onClick={() => setViewSubSection(data)}
                   className="flex cursor-pointer items-center justify-between gap-x-3 border-b-2 border-b-richblack-600 py-2"

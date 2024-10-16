@@ -211,7 +211,7 @@ const CourseInformationForm = () => {
             Choose a Category
           </option>
           {!loading &&
-            courseCategories.map((category) => (
+            courseCategories?.map((category) => (
               <option key={category._id}>{category.name}</option>
             ))}
         </select>

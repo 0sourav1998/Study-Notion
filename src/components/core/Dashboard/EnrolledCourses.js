@@ -42,7 +42,7 @@ export default function EnrolledCourses() {
             <p className="w-full sm:w-1/4 px-2 py-2 sm:px-2 sm:py-3">Duration</p>
             <p className="w-full sm:flex-1 px-2 py-2 sm:px-2 sm:py-3">Progress</p>
           </div>
-          {enrolledCourses.map((course, i, arr) => (
+          {enrolledCourses?.map((course, i, arr) => (
             <div
               className={`flex flex-col sm:flex-row items-center border border-richblack-700 ${
                 i === arr.length - 1 ? "rounded-b-lg" : "rounded-none"

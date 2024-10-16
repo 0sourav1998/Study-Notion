@@ -15,19 +15,19 @@ const InstructorChart = ({courses}) => {
         return colors ;
     }
     const studentsChartData = {
-        labels : courses.slice(0,4).map((course)=>course.courseName) ,
+        labels : courses.slice(0,4)?.map((course)=>course.courseName) ,
         datasets : [
             {
-                data :courses.map((course)=>course.totalEnrolledStudents) ,
+                data :courses?.map((course)=>course.totalEnrolledStudents) ,
                 backgroundColor : randomColorGenerate(courses.length)
             } 
         ]
     }
     const amountChartData = {
-        labels : courses.slice(0,4).map((course)=>course.courseName) ,
+        labels : courses.slice(0,4)?.map((course)=>course.courseName) ,
         datasets : [
             {
-                data :courses.map((course)=>course.totalAmoutGenerated) ,
+                data :courses?.map((course)=>course.totalAmoutGenerated) ,
                 backgroundColor : randomColorGenerate(courses.length)
             } 
         ]

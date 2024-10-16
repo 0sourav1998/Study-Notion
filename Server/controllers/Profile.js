@@ -206,7 +206,7 @@ exports.instructorStats = async (req, res) => {
   try {
     const allCourses = await Course.find({ instructor: instructorId });
 
-    const courseData = allCourses.map((course) => {
+    const courseData = allCourses?.map((course) => {
       const totalEnrolledStudents = course.studentEnrolled.length;
       const totalAmoutGenerated = course.studentEnrolled.length * course.price;
       const courseDataWithStats = {

@@ -72,7 +72,7 @@ const Catalog = () => {
               <div className="py-8">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                   {
-                    catalogPageData?.data?.mostSellingCourses?.slice(0,4).map((course,index)=>(
+                    catalogPageData?.data?.mostSellingCourses?.slice(0,4)?.map((course,index)=>(
                       <CourseCard course={course} index={index} height={"h-[250px]"}/>
                     ))
                   }

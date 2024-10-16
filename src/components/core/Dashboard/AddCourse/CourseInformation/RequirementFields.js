@@ -47,7 +47,7 @@ const RequirementFields = ({
         </button>
       </div>
       {requirementList.length > 0 &&
-        requirementList.map((requirement, index) => (
+        requirementList?.map((requirement, index) => (
           <ul className="mt-2 list-inside list-disc">
             <li key={index} className="flex items-center text-richblack-5">
               {requirement}

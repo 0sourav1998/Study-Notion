@@ -67,7 +67,7 @@ function Navbar() {
         </Link>
         <nav className="hidden md:flex sm:mr-0 mr-4">
           <ul className="flex sm:gap-x-6 gap-x-2 text-richblack-25 sm:text-[18px] sm:mr-0 mr-4 text-[10px]">
-            {NavbarLinks.map((link, index) => (
+            {NavbarLinks?.map((link, index) => (
               <li key={index}>
                 {link.title === "Catalog" ? (
                   <div
@@ -84,7 +84,7 @@ function Navbar() {
                       {loading ? (
                         <p className="text-center">Loading...</p>
                       ) : subLinks.length ? (
-                        subLinks.map((subLink, i) => (
+                        subLinks?.map((subLink, i) => (
                           <Link
                             to={`/catalog/${subLink.name
                               .split(" ")
@@ -178,7 +178,7 @@ function Navbar() {
           <div className="w-full z-[20] text-gray-800 absolute bg-richblack-600 rounded-md shadow-xl h-fit p-4 top-8 left-0 transition-all duration-300 ease-in-out transform">
             <nav className="flex flex-col gap-4 sm:mr-0 mr-4">
               <ul className="flex flex-col gap-2 gap-x-6 text-richblack-25 text-sm">
-                {NavbarLinks.map((link, index) => (
+                {NavbarLinks?.map((link, index) => (
                   <li key={index}>
                     {link.title === "Catalog" ? (
                       <div
@@ -195,7 +195,7 @@ function Navbar() {
                           {loading ? (
                             <p className="text-center">Loading...</p>
                           ) : subLinks.length ? (
-                            subLinks.map((subLink, i) => (
+                            subLinks?.map((subLink, i) => (
                               <Link
                                 to={`/catalog/${subLink.name
                                   .split(" ")

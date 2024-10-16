@@ -114,7 +114,7 @@ export default function EditProfile() {
                 {...register("gender", { required: true })}
                 defaultValue={user?.additionalDetails?.gender}
               >
-                {genders.map((ele, i) => {
+                {genders?.map((ele, i) => {
                   return (
                     <option key={i} value={ele}>
                       {ele}

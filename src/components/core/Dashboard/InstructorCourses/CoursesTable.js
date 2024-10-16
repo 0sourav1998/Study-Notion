@@ -40,7 +40,7 @@ const CoursesTable = ({ courses, setCourses }) => {
           </Tr>
         </Thead>
         <Tbody>
-            {courses.length > 0 && courses.map((course)=>(
+            {courses.length > 0 && courses?.map((course)=>(
                 <Tr key={course._id}
                 className="flex gap-x-10 border-b border-richblack-800 px-6 py-8">
                 <Td className="flex flex-1 gap-x-4 sm:text-normal text-xs">
