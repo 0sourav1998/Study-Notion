@@ -97,6 +97,8 @@ exports.deleteAccount = async (req, res) => {
       });
     }
     await Profile.findByIdAndDelete({ _id: user.additionalDetails });
+
+    await Course.deleteMany({instructor : id})
     
     await User.findByIdAndDelete({ _id: id });
     res.status(200).json({

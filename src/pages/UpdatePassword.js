@@ -58,7 +58,7 @@ function UpdatePassword() {
                 value={password}
                 onChange={handleOnChange}
                 placeholder="Enter Password"
-                className="form-style w-full !pr-10 p-2"
+                className="form-style w-full !pr-10 p-2 "
               />
               <span
                 onClick={() => setShowPassword((prev) => !prev)}
@@ -82,7 +82,7 @@ function UpdatePassword() {
                 value={confirmPassword}
                 onChange={handleOnChange}
                 placeholder="Confirm Password"
-                className="form-style w-full !pr-10 p-2"
+                className="form-style w-full !pr-10 p-2 richblack-200"
               />
               <span
                 onClick={() => setShowConfirmPassword((prev) => !prev)}
@@ -97,9 +97,7 @@ function UpdatePassword() {
             </label>
 
             <button
-              type="submit"
-              className="mt-6 w-full rounded-[8px] bg-yellow-50 py-[12px] px-[12px] font-medium text-richblack-900"
-            >
+              type="submit"className="w-full mt-6 rounded-[8px] bg-blue-500  text-richblack-25 font-semibold py-[8px] px-[12px]">
               Reset Password
             </button>
           </form>

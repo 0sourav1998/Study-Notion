@@ -132,12 +132,12 @@ function Navbar() {
           {token === null ? (
             <>
               <Link to="/login">
-                <button className="rounded-[8px] text-[8px] hover:scale-110 hover:text-yellow-300 transition-all duration-300 border border-richblack-700 bg-richblack-800 px-[12px] py-[7px] text-richblack-100">
+                <button className="rounded-[8px] md:text-lg sm:text-lg hover:scale-110 hover:text-yellow-300 transition-all duration-300 border border-richblack-700 bg-richblack-800 px-[12px] py-[7px] text-richblack-100">
                   Log in
                 </button>
               </Link>
               <Link to="/signup">
-                <button className="rounded-[8px] text-[8px] hover:scale-110 hover:text-yellow-300 transition-all duration-300 border border-richblack-700 bg-richblack-800 sm:px-[12px] sm:py-[8px] text-richblack-100">
+                <button className="rounded-[8px] md:text-lg sm:text-lg hover:scale-110 hover:text-yellow-300 transition-all duration-300 border border-richblack-700 bg-richblack-800 sm:px-[12px] sm:py-[8px] text-richblack-100">
                   Sign up
                 </button>
               </Link>
@@ -243,12 +243,12 @@ function Navbar() {
               {token === null ? (
                 <>
                   <Link to="/login">
-                    <button className="rounded-[8px] text-sm  border border-richblack-700 bg-richblack-800 px-[12px] py-[7px] text-richblack-100">
+                    <button className="rounded-[8px] text-sm sm:text-lg  border border-richblack-700 bg-richblack-800 px-[12px] py-[7px] text-richblack-100">
                       Log in
                     </button>
                   </Link>
                   <Link to="/signup">
-                    <button className="rounded-[8px] text-sm  border border-richblack-700 bg-richblack-800 px-[12px] py-[7px] text-richblack-100">
+                    <button className="rounded-[8px] text-sm sm:text-lg text-[8px]  border border-richblack-700 bg-richblack-800 px-[12px] py-[7px] text-richblack-100">
                       Sign up
                     </button>
                   </Link>

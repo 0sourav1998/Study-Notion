@@ -80,8 +80,8 @@ function VerifyEmail() {
             />
             <button
               type="submit"
-              className="w-full bg-yellow-50 py-[12px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900"
-            >
+              className="w-full mt-6 rounded-[8px] bg-blue-500  text-richblack-25 font-semibold py-[8px] px-[12px]"
+              >
               Verify Email
             </button>
           </form>
