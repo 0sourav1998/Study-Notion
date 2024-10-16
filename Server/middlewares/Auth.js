@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 
 exports.auth = async (req, res, next) => {
   try {
-    console.log("Inside Auth")
         const token = req.cookies.token 
                         || req.body.token 
                         || req.header("Authorization").replace("Bearer ", "");

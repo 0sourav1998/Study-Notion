@@ -88,7 +88,6 @@ exports.uploadProfilePicture = async(req,res)=>{
 exports.deleteAccount = async (req, res) => {
   try {
     const id = req.user.id;
-
     const user = await User.findById({ _id: id });
     if (!user) {
       return res.status(404).json({
@@ -97,15 +96,14 @@ exports.deleteAccount = async (req, res) => {
       });
     }
     await Profile.findByIdAndDelete({ _id: user.additionalDetails });
-
-    await Course.deleteMany({instructor : id})
-    
+    const result = await Course.deleteMany({instructor : id})
     await User.findByIdAndDelete({ _id: id });
     res.status(200).json({
       success: true,
       message: "User deleted successfully",
     });
   } catch (error) {
+    console.log(error.message);
     res
       .status(500)
       .json({ success: false, message: "User Cannot be deleted successfully" });

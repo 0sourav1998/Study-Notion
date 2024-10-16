@@ -87,13 +87,13 @@ export default function MyProfile() {
             />
             <button
               onClick={() => imageRef.current.click()}
-              className="bg-yellow-300 p-2 rounded-md text-white font-semibold mt-2"
+              className="bg-blue-500 p-2 rounded-md text-white font-semibold mt-2"
             >
               Choose From Galary
             </button>
             <button
               onClick={uploadProfilePicture}
-              className="bg-yellow-300 p-2 rounded-md text-white font-semibold mt-2"
+              className="bg-blue-500 p-2 rounded-md text-white font-semibold mt-2"
             >
               Upload
             </button>
@@ -131,7 +131,7 @@ export default function MyProfile() {
           </p>
           <IconBtn
             text="Edit"
-            className="bg-yellow-200"
+            className="bg-blue-500"
             onclick={() => {
               navigate("/dashboard/settings");
             }}
